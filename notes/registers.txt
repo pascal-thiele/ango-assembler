@@ -1,0 +1,228 @@
+# integer
+0 x0 zero
+1 x1 ra
+2 x2 sp
+3 x3 gp
+4 x4 tp
+5 x5 t0
+6 x6 t1
+7 x7 t2
+8 x8 s0 fp
+9 x9 s1
+10 x10 a0
+11 x11 a1
+12 x12 a2
+13 x13 a3
+14 x14 a4
+15 x15 a5
+16 x16 a6
+17 x17 a7
+18 x18 s2
+19 x19 s3
+20 x20 s4
+21 x21 s5
+22 x22 s6
+23 x23 s7
+24 x24 s8
+25 x25 s9
+26 x26 s10
+27 x27 s11
+28 x28 t3
+29 x29 t4
+30 x30 t5
+31 x31 t6
+
+# floating point
+0 f0 ft0
+1 f1 ft1
+2 f2 ft2
+3 f3 ft3
+4 f4 ft4
+5 f5 ft5
+6 f6 ft6
+7 f7 ft7
+8 f8 fs0
+9 f9 fs1
+10 f10 fa0
+11 f11 fa1
+12 f12 fa2
+13 f13 fa3
+14 f14 fa4
+15 f15 fa5
+16 f16 fa6
+17 f17 fa7
+18 f18 fs2
+19 f19 fs3
+20 f20 fs4
+21 f21 fs5
+22 f22 fs6
+23 f23 fs7
+24 f24 fs8
+25 f25 fs9
+26 f26 fs10
+27 f27 fs11
+28 f28 ft8
+29 f29 ft9
+30 f30 ft10
+31 f31 ft11
+
+# control and status
+0 ustatus
+1 fflags
+2 frm
+3 fcsr
+4 uie
+5 utvec
+64 uscratch
+65 uepc
+66 ucause
+67 utval
+68 uip
+256 sstatus
+258 sedeleg
+259 sideleg
+260 sie
+261 stvec
+262 scounteren
+320 sscratch
+321 sepc
+322 scause
+323 stval
+324 sip
+384 satp
+768 mstatus
+769 misa
+770 medeleg
+771 mideleg
+772 mie
+773 mtvec
+774 mcounteren
+800 mcountinhibit
+803 mhpmevent3
+804 mhpmevent4
+805 mhpmevent5
+806 mhpmevent6
+807 mhpmevent7
+808 mhpmevent8
+809 mhpmevent9
+810 mhpmevent10
+811 mhpmevent11
+812 mhpmevent12
+813 mhpmevent13
+814 mhpmevent14
+815 mhpmevent15
+816 mhpmevent16
+817 mhpmevent17
+818 mhpmevent18
+819 mhpmevent19
+820 mhpmevent20
+821 mhpmevent21
+822 mhpmevent22
+823 mhpmevent23
+824 mhpmevent24
+825 mhpmevent25
+826 mhpmevent26
+827 mhpmevent27
+828 mhpmevent28
+829 mhpmevent29
+830 mhpmevent30
+831 mhpmevent31
+832 mscratch
+833 mepc
+834 mcause
+835 mtval
+836 mip
+928 pmpcfg0
+929 pmpcfg1
+930 pmpcfg2
+931 pmpcfg3
+944 pmpaddr0
+945 pmpaddr1
+946 pmpaddr2
+947 pmpaddr3
+948 pmpaddr4
+949 pmpaddr5
+950 pmpaddr6
+951 pmpaddr7
+952 pmpaddr8
+953 pmpaddr9
+954 pmpaddr10
+955 pmpaddr11
+956 pmpaddr12
+957 pmpaddr13
+958 pmpaddr14
+959 pmpaddr15
+1952 tselect
+1953 tdata1
+1954 tdata2
+1955 tdata3
+1968 dcsr
+1969 dpc
+1970 dscratch
+2816 mcycle
+2818 minstret
+2819 mhpmcounter3
+2820 mhpmcounter4
+2821 mhpmcounter5
+2822 mhpmcounter6
+2823 mhpmcounter7
+2824 mhpmcounter8
+2825 mhpmcounter9
+2826 mhpmcounter10
+2827 mhpmcounter11
+2828 mhpmcounter12
+2829 mhpmcounter13
+2830 mhpmcounter14
+2831 mhpmcounter15
+2832 mhpmcounter16
+2833 mhpmcounter17
+2834 mhpmcounter18
+2835 mhpmcounter19
+2836 mhpmcounter20
+2837 mhpmcounter21
+2838 mhpmcounter22
+2839 mhpmcounter23
+2840 mhpmcounter24
+2841 mhpmcounter25
+2842 mhpmcounter26
+2843 mhpmcounter27
+2844 mhpmcounter28
+2845 mhpmcounter29
+2846 mhpmcounter30
+2847 mhpmcounter31
+3072 cycle
+3073 time
+3074 instret
+3075 hpmcounter3
+3076 hpmcounter4
+3077 hpmcounter5
+3078 hpmcounter6
+3079 hpmcounter7
+3080 hpmcounter8
+3081 hpmcounter9
+3082 hpmcounter10
+3083 hpmcounter11
+3084 hpmcounter12
+3085 hpmcounter13
+3086 hpmcounter14
+3087 hpmcounter15
+3088 hpmcounter16
+3089 hpmcounter17
+3090 hpmcounter18
+3091 hpmcounter19
+3092 hpmcounter20
+3093 hpmcounter21
+3094 hpmcounter22
+3095 hpmcounter23
+3096 hpmcounter24
+3097 hpmcounter25
+3098 hpmcounter26
+3099 hpmcounter27
+3100 hpmcounter28
+3101 hpmcounter29
+3102 hpmcounter30
+3103 hpmcounter31
+3857 mvendorid
+3858 marchid
+3859 mimpid
+3860 mhartid

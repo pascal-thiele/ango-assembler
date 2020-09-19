@@ -1,0 +1,32 @@
+%YAML 1.2
+---
+scope: source.ango-riscv64-assembly-language
+contexts:
+  main:
+    - match: \"
+      scope: punctuation
+      push: string
+
+    - match: \#
+      scope: comment
+      push: comment
+
+    - match: \b[0-9]+\b
+      scope: constant
+
+    - match: \B\.(align|byte|constant|doubleword|halfword|include|label|word|zero)\b
+      scope: entity
+
+    - match: \b(add|addi|addiw|addw|amoaddd|amoadddaq|amoadddaqrl|amoadddrl|amoaddw|amoaddwaq|amoaddwaqrl|amoaddwrl|amoandd|amoanddaq|amoanddaqrl|amoanddrl|amoandw|amoandwaq|amoandwaqrl|amoandwrl|amomaxd|amomaxdaq|amomaxdaqrl|amomaxdrl|amomaxw|amomaxwaq|amomaxwaqrl|amomaxwrl|amomaxud|amomaxudaq|amomaxudaqrl|amomaxudrl|amomaxuw|amomaxuwaq|amomaxuwaqrl|amomaxuwrl|amomind|amomindaq|amomindaqrl|amomindrl|amominw|amominwaq|amominwaqrl|amominwrl|amominud|amominudaq|amominudaqrl|amominudrl|amominuw|amominuwaq|amominuwaqrl|amominuwrl|amoord|amoordaq|amoordaqrl|amoordrl|amoorw|amoorwaq|amoorwaqrl|amoorwrl|amoswapd|amoswapdaq|amoswapdaqrl|amoswapdrl|amoswapw|amoswapwaq|amoswapwaqrl|amoswapwrl|amoxord|amoxordaq|amoxordaqrl|amoxordrl|amoxorw|amoxorwaq|amoxorwaqrl|amoxorwrl|and|andi|auipc|beq|bge|bgeu|blt|bltu|bne|call|csrrc|csrrci|csrrs|csrrsi|csrrw|csrrwi|div|divu|divuw|divw|ebreak|ecall|faddddyn|fadddrdn|fadddrmm|fadddrne|fadddrtz|fadddrup|faddqdyn|faddqrdn|faddqrmm|faddqrne|faddqrtz|faddqrup|faddsdyn|faddsrdn|faddsrmm|faddsrne|faddsrtz|faddsrup|fclassd|fclassq|fclasss|fcvtdldyn|fcvtdlrdn|fcvtdlrmm|fcvtdlrne|fcvtdlrtz|fcvtdlrup|fcvtdludyn|fcvtdlurdn|fcvtdlurmm|fcvtdlurne|fcvtdlurtz|fcvtdlurup|fcvtdqdyn|fcvtdqrdn|fcvtdqrmm|fcvtdqrne|fcvtdqrtz|fcvtdqrup|fcvtds|fcvtdwdyn|fcvtdwrdn|fcvtdwrmm|fcvtdwrne|fcvtdwrtz|fcvtdwrup|fcvtdwudyn|fcvtdwurdn|fcvtdwurmm|fcvtdwurne|fcvtdwurtz|fcvtdwurup|fcvtlddyn|fcvtldrdn|fcvtldrmm|fcvtldrne|fcvtldrtz|fcvtldrup|fcvtlqdyn|fcvtlqrdn|fcvtlqrmm|fcvtlqrne|fcvtlqrtz|fcvtlqrup|fcvtlsdyn|fcvtlsrdn|fcvtlsrmm|fcvtlsrne|fcvtlsrtz|fcvtlsrup|fcvtluddyn|fcvtludrdn|fcvtludrmm|fcvtludrne|fcvtludrtz|fcvtludrup|fcvtluqdyn|fcvtluqrdn|fcvtluqrmm|fcvtluqrne|fcvtluqrtz|fcvtluqrup|fcvtlusdyn|fcvtlusrdn|fcvtlusrmm|fcvtlusrne|fcvtlusrtz|fcvtlusrup|fcvtqd|fcvtqldyn|fcvtqlrdn|fcvtqlrmm|fcvtqlrne|fcvtqlrtz|fcvtqlrup|fcvtqludyn|fcvtqlurdn|fcvtqlurmm|fcvtqlurne|fcvtqlurtz|fcvtqlurup|fcvtqs|fcvtqwdyn|fcvtqwrdn|fcvtqwrmm|fcvtqwrne|fcvtqwrtz|fcvtqwrup|fcvtqwudyn|fcvtqwurdn|fcvtqwurmm|fcvtqwurne|fcvtqwurtz|fcvtqwurup|fcvtsddyn|fcvtsdrdn|fcvtsdrmm|fcvtsdrne|fcvtsdrtz|fcvtsdrup|fcvtsldyn|fcvtslrdn|fcvtslrmm|fcvtslrne|fcvtslrtz|fcvtslrup|fcvtsludyn|fcvtslurdn|fcvtslurmm|fcvtslurne|fcvtslurtz|fcvtslurup|fcvtsqdyn|fcvtsqrdn|fcvtsqrmm|fcvtsqrne|fcvtsqrtz|fcvtsqrup|fcvtswdyn|fcvtswrdn|fcvtswrmm|fcvtswrne|fcvtswrtz|fcvtswrup|fcvtswudyn|fcvtswurdn|fcvtswurmm|fcvtswurne|fcvtswurtz|fcvtswurup|fcvtwddyn|fcvtwdrdn|fcvtwdrmm|fcvtwdrne|fcvtwdrtz|fcvtwdrup|fcvtwqdyn|fcvtwqrdn|fcvtwqrmm|fcvtwqrne|fcvtwqrtz|fcvtwqrup|fcvtwsdyn|fcvtwsrdn|fcvtwsrmm|fcvtwsrne|fcvtwsrtz|fcvtwsrup|fcvtwuddyn|fcvtwudrdn|fcvtwudrmm|fcvtwudrne|fcvtwudrtz|fcvtwudrup|fcvtwuqdyn|fcvtwuqrdn|fcvtwuqrmm|fcvtwuqrne|fcvtwuqrtz|fcvtwuqrup|fcvtwusdyn|fcvtwusrdn|fcvtwusrmm|fcvtwusrne|fcvtwusrtz|fcvtwusrup|fdivddyn|fdivdrdn|fdivdrmm|fdivdrne|fdivdrtz|fdivdrup|fdivqdyn|fdivqrdn|fdivqrmm|fdivqrne|fdivqrtz|fdivqrup|fdivsdyn|fdivsrdn|fdivsrmm|fdivsrne|fdivsrtz|fdivsrup|fence|fencei|feqd|feqq|feqs|fld|fled|fleq|fles|flq|fltd|fltq|flts|flw|fmaddddyn|fmadddrdn|fmadddrmm|fmadddrne|fmadddrtz|fmadddrup|fmaddqdyn|fmaddqrdn|fmaddqrmm|fmaddqrne|fmaddqrtz|fmaddqrup|fmaddsdyn|fmaddsrdn|fmaddsrmm|fmaddsrne|fmaddsrtz|fmaddsrup|fmaxd|fmaxq|fmaxs|fmind|fminq|fmins|fmsubddyn|fmsubdrdn|fmsubdrmm|fmsubdrne|fmsubdrtz|fmsubdrup|fmsubqdyn|fmsubqrdn|fmsubqrmm|fmsubqrne|fmsubqrtz|fmsubqrup|fmsubsdyn|fmsubsrdn|fmsubsrmm|fmsubsrne|fmsubsrtz|fmsubsrup|fmulddyn|fmuldrdn|fmuldrmm|fmuldrne|fmuldrtz|fmuldrup|fmulqdyn|fmulqrdn|fmulqrmm|fmulqrne|fmulqrtz|fmulqrup|fmulsdyn|fmulsrdn|fmulsrmm|fmulsrne|fmulsrtz|fmulsrup|fmvdx|fmvwx|fmvxd|fmvxw|fnmaddddyn|fnmadddrdn|fnmadddrmm|fnmadddrne|fnmadddrtz|fnmadddrup|fnmaddqdyn|fnmaddqrdn|fnmaddqrmm|fnmaddqrne|fnmaddqrtz|fnmaddqrup|fnmaddsdyn|fnmaddsrdn|fnmaddsrmm|fnmaddsrne|fnmaddsrtz|fnmaddsrup|fnmsubddyn|fnmsubdrdn|fnmsubdrmm|fnmsubdrne|fnmsubdrtz|fnmsubdrup|fnmsubqdyn|fnmsubqrdn|fnmsubqrmm|fnmsubqrne|fnmsubqrtz|fnmsubqrup|fnmsubsdyn|fnmsubsrdn|fnmsubsrmm|fnmsubsrne|fnmsubsrtz|fnmsubsrup|fsd|fsgnjd|fsgnjnd|fsgnjnq|fsgnjns|fsgnjq|fsgnjs|fsgnjxd|fsgnjxq|fsgnjxs|fsq|fsqrtddyn|fsqrtdrdn|fsqrtdrmm|fsqrtdrne|fsqrtdrtz|fsqrtdrup|fsqrtqdyn|fsqrtqrdn|fsqrtqrmm|fsqrtqrne|fsqrtqrtz|fsqrtqrup|fsqrtsdyn|fsqrtsrdn|fsqrtsrmm|fsqrtsrne|fsqrtsrtz|fsqrtsrup|fsubddyn|fsubdrdn|fsubdrmm|fsubdrne|fsubdrtz|fsubdrup|fsubqdyn|fsubqrdn|fsubqrmm|fsubqrne|fsubqrtz|fsubqrup|fsubsdyn|fsubsrdn|fsubsrmm|fsubsrne|fsubsrtz|fsubsrup|fsw|jal|jalr|lb|lbu|ld|lh|lhu|li|lrd|lrdaq|lrdaqrl|lrdrl|lrw|lrwaq|lrwaqrl|lrwrl|lui|lw|lwu|mret|mul|mulh|mulhsu|mulhu|mulw|or|ori|rem|remu|remuw|remw|sb|scd|scdaq|scdaqrl|scdrl|scw|scwaq|scwaqrl|scwrl|sd|sfencevma|sh|sll|slli|slliw|sllw|slt|slti|sltiu|sltu|sra|srai|sraiw|sraw|sret|srl|srli|srliw|srlw|sub|subw|sw|uret|wfi|xor|xori)\b    
+      scope: keyword
+
+  string:
+    - meta_scope: string
+    - match: \"
+      scope: punctuation
+      pop: true
+
+  comment:
+    - meta_scope: comment
+    - match: $
+      pop: true

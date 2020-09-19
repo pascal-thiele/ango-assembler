@@ -1,0 +1,4 @@
+The ango riscv64 assembler takes one or more files of ango riscv64 assembly language and translates them into one file of riscv instructions. The source files are translated in the order they are specified. The resulting file is always named "out".
+
+# example command line
+ango-riscv64-assembler source_1 source_2 source_n

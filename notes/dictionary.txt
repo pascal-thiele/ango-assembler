@@ -1,0 +1,2150 @@
+.align integer
+Increments the location counter to the nearest multiple of integer bytes, with integer being a power of two. For instance, ".align 4" aligns the location counter to 4 bytes. If the location counter is already aligned, no changes are made. Keep in mind the 64 bit ango kernel ensures alignment to 8 bytes only.
+
+.byte integer
+Writes the 8 bit integer to the location counter. integer has to be in the range -128 to 255.
+
+.constant identifier integer
+Emits a constant to the constant table. Its integer can be accessed by its identifier and can be loaded as an immediate within operations. integer has to be in the range -9223372036854775808 to 18446744073709551615.
+
+.doublword integer
+Writes the 64 bit integer to the location counter. integer has to be in the range -9223372036854775808 to 18446744073709551615.
+
+.halfword integer
+Writes the 16 bit integer to the location counter. integer has to be in the range -32768 to 65535.
+
+.include quote
+Copies the content of the file at the file path defined by quote to the location counter.
+
+.label identifier
+Emits a label to the label table, from which memory accesses relative to the program counter can be derived from.
+
+.word integer
+Writes the 32 bit integer to the location counter. integer has to be in the range -2147483648 to 4294967295.
+
+.zero integer
+Sets integer bytes to zero starting from the location counter. integer has to be in the range 0 to 18446744073709551615.
+
+add integer_register_1 integer_register_2 integer_register_3
+add
+Adds integer_register_3 to integer_register_2 and writes the result to integer_register_1.
+
+addi integer_register_1 integer_register_2 integer
+add immediate
+Adds integer to integer_register_2 and writes the result to integer_register_1. integer has to be in the range -2048 to 2047.
+
+addiw integer_register_1 integer_register_2 integer
+add immediate word
+Adds integer to the lowermost 32 bits of integer_register_2 and writes the sign-extended lowermost 32 bits of the result to integer_register_1. integer has to be in the range -2048 to 2047.
+
+addw integer_register_1 integer_register_2 integer_register_3
+add word
+Adds the lowermost 32 bits of integer_register_3 to the lowermost 32 bits of integer_register_2 and writes the sign-extended lowermost 32 bits of the result to integer_register_1.
+
+amoaddd integer_register_1 integer_register_2 integer_register_3
+atomic memory operation add doubleword
+Adds integer_register_3 to the memory doubleword at the address in integer_register_2 and writes the result to integer_register_1.
+
+amoadddaq integer_register_1 integer_register_2 integer_register_3
+atomic memory operation add doubleword acquire
+Adds integer_register_3 to the memory doubleword at the address in integer_register_2 and writes the result to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations of the executing hardware thread.
+
+amoadddaqrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation add doubleword acquire and release
+Adds integer_register_3 to the memory doubleword at the address in integer_register_2 and writes the result to integer_register_1. Other hardware threads observe this operation to take place before any succeeding and after any preceding operations of the executing hardware thread.
+
+amoadddrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation add doubleword release
+Adds integer_register_3 to the memory doubleword at the address in integer_register_2 and writes the result to integer_register_1. Other hardware threads observe this operation to take place after any preceding operations of the executing hardware thread.
+
+amoaddw integer_register_1 integer_register_2 integer_register_3
+atomic memory operation add word
+Adds integer_register_3 to the memory word at the address in integer_register_2 and writes the sign-extended result to integer_register_1.
+
+amoaddwaq integer_register_1 integer_register_2 integer_register_3
+atomic memory operation add word acquire
+Adds integer_register_3 to the memory word at the address in integer_register_2 and writes the sign-extended result to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations of the executing hardware thread.
+
+amoaddwaqrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation add word acquire and release
+Adds integer_register_3 to the memory word at the address in integer_register_2 and writes the sign-extended result to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations and after any preceding operations of the executing hardware thread.
+
+amoaddwrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation add word release
+Adds integer_register_3 to the memory word at the address in integer_register_2 and writes the sign-extended result to integer_register_1. Other hardware threads observe this operation to take place after any preceding operations of the executing hardware thread.
+
+amoandd integer_register_1 integer_register_2 integer_register_3
+atomic memory operation and doubleword
+Computes a bitwise and of integer_register_3 and the memory doubleword at the address in integer_register_2. The result is stored in the memory doubleword at the address in integer_register_2 and written to integer_register_1.
+
+amoanddaq integer_register_1 integer_register_2 integer_register_3
+atomic memory operation and doubleword acquire
+Computes a bitwise and of integer_register_3 and the memory doubleword at the address in integer_register_2. The result is stored in the memory doubleword at the address in integer_register_2 and written to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations of the executing hardware thread.
+
+amoanddaqrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation and doubleword acquire and release
+Computes a bitwise and of integer_register_3 and the memory doubleword at the address in integer_register_2. The result is stored in the memory doubleword at the address in integer_register_2 and written to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations and after any preceding operations of the executing hardware thread.
+
+amoanddrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation and doubleword release
+Computes a bitwise and of integer_register_3 and the memory doubleword at the address in integer_register_2. The result is stored in the memory doubleword at the address in integer_register_2 and written to integer_register_1. Other hardware threads observe this operation to take place after any preceding operations of the executing hardware thread.
+
+amoandw integer_register_1 integer_register_2 integer_register_3
+atomic memory operation and word
+Computes a bitwise and of integer_register_3 and the memory word at the address in integer_register_2. The result is stored in the memory word at the address in integer_register_2 and written sign-extended to integer_register_1.
+
+amoandwaq integer_register_1 integer_register_2 integer_register_3
+atomic memory operation and word acquire
+Computes a bitwise and of integer_register_3 and the memory word at the address in integer_register_2. The result is stored in the memory word at the address in integer_register_2 and written sign-extended to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations of the executing hardware thread.
+
+amoandwaqrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation and word acquire and release
+Computes a bitwise and of integer_register_3 and the memory word at the address in integer_register_2. The result is stored in the memory word at the address in integer_register_2 and written sign-extended to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations and after any preceding operations of the executing hardware thread.
+
+amoandwrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation and word release
+Computes a bitwise and of integer_register_3 and the memory word at the address in integer_register_2. The result is stored in the memory word at the address in integer_register_2 and written sign-extended to integer_register_1. Other hardware threads observe this operation to take place after any preceding operations of the executing hardware thread.
+
+amomaxd integer_register_1 integer_register_2 integer_register_3
+atomic memory operation maximum doubleword
+Compares integer_register_3 with the memory doubleword at the address in integer_register_2. The greater value is stored in the memory doubleword at the address in integer_register_2 and written to integer_register_1.
+
+amomaxdaq integer_register_1 integer_register_2 integer_register_3
+atomic memory operation maximum doubleword acquire
+Compares integer_register_3 with the memory doubleword at the address in integer_register_2. The greater value is stored in the memory doubleword at the address in integer_register_2 and written to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations of the executing hardware thread.
+
+amomaxdaqrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation maximum doubleword acquire and release
+Compares integer_register_3 with the memory doubleword at the address in integer_register_2. The greater value is stored in the memory doubleword at the address in integer_register_2 and written to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations and after any preceding operations of the executing hardware thread.
+
+amomaxdrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation maximum doubleword release
+Compares integer_register_3 with the memory doubleword at the address in integer_register_2. The greater value is stored in the memory doubleword at the address in integer_register_2 and written to integer_register_1. Other hardware threads observe this operation to take place after any preceding operations of the executing hardware thread.
+
+amomaxw integer_register_1 integer_register_2 integer_register_3
+atomic memory operation maximum word
+Compares integer_register_3 with the memory word at the address in integer_register_2. The greater value is stored in the memory word at the address in integer_register_2 and written sign-extended to integer_register_1.
+
+amomaxwaq integer_register_1 integer_register_2 integer_register_3
+atomic memory operation maximum word acquire
+Compares integer_register_3 with the memory word at the address in integer_register_2. The greater value is stored in the memory word at the address in integer_register_2 and written sign-extended to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations of the executing hardware thread.
+
+amomaxwaqrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation maximum word acquire and release
+Compares integer_register_3 with the memory word at the address in integer_register_2. The greater value is stored in the memory word at the address in integer_register_2 and written sign-extended to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations and after any preceding operations of the executing hardware thread.
+
+amomaxwrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation maximum word release
+Compares integer_register_3 with the memory word at the address in integer_register_2. The greater value is stored in the memory word at the address in integer_register_2 and written sign-extended to integer_register_1. Other hardware threads observe this operation to take place after any preceding operations of the executing hardware thread.
+
+amomaxud integer_register_1 integer_register_2 integer_register_3
+atomic memory operation maximum unsigned doubleword
+Compares integer_register_3 with the memory doubleword at the address in integer_register_2, treating them as unsigned values. The greater value is stored in the memory doubleword at the address in integer_register_2 and written to integer_register_1.
+
+amomaxudaq integer_register_1 integer_register_2 integer_register_3
+atomic memory operation maximum unsigned doubleword acquire
+Compares integer_register_3 with the memory doubleword at the address in integer_register_2, treating them as unsigned values. The greater value is stored in the memory doubleword at the address in integer_register_2 and written to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations of the executing hardware thread.
+
+amomaxudaqrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation maximum unsigned doubleword acquire and release
+Compares integer_register_3 with the memory doubleword at the address in integer_register_2, treating them as unsigned values. The greater value is stored in the memory doubleword at the address in integer_register_2 and written to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations and after any preceding operations of the executing hardware thread.
+
+amomaxudrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation maximum unsigned doubleword release
+Compares integer_register_3 with the memory doubleword at the address in integer_register_2, treating them as unsigned values. The greater value is stored in the memory doubleword at the address in integer_register_2 and written to integer_register_1. Other hardware threads observe this operation to take place after any preceding operations of the executing hardware thread.
+
+amomaxuw integer_register_1 integer_register_2 integer_register_3
+atomic memory operation maximum unsigned word
+Compares integer_register_3 with the memory word at the address in integer_register_2, treating them as unsigned values. The greater value is stored in the memory word at the address in integer_register_2 and written sign-extended to integer_register_1.
+
+amomaxuwaq integer_register_1 integer_register_2 integer_register_3
+atomic memory operation maximum unsigned word acquire
+Compares integer_register_3 with the memory word at the address in integer_register_2, treating them as unsigned values. The greater value is stored in the memory word at the address in integer_register_2 and written sign-extended to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations of the executing hardware thread.
+
+amomaxuwaqrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation maximum unsigned word acquire and release
+Compares integer_register_3 with the memory word at the address in integer_register_2, treating them as unsigned values. The greater value is stored in the memory word at the address in integer_register_2 and written sign-extended to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations and after any preceding operations of the executing hardware thread.
+
+amomaxuwrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation maximum unsigned word release
+Compares integer_register_3 with the memory word at the address in integer_register_2, treating them as unsigned values. The greater value is stored in the memory word at the address in integer_register_2 and written sign-extended to integer_register_1. Other hardware threads observe this operation to take place after any preceding operations of the executing hardware thread.
+
+amomind integer_register_1 integer_register_2 integer_register_3
+atomic memory operation minimum doubleword
+Compares integer_register_3 with the memory doubleword at the address in integer_register_2. The lesser value is stored in the memory doubleword at the address in integer_register_2 and written to integer_register_1.
+
+amomindaq integer_register_1 integer_register_2 integer_register_3
+atomic memory operation minimum doubleword acquire
+Compares integer_register_3 with the memory doubleword at the address in integer_register_2. The lesser value is stored in the memory doubleword at the address in integer_register_2 and written to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations of the executing hardware thread.
+
+amomindaqrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation minimum doubleword acquire and release
+Compares integer_register_3 with the memory doubleword at the address in integer_register_2. The lesser value is stored in the memory doubleword at the address in integer_register_2 and written to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations and after any preceding operations of the executing hardware thread.
+
+amomindrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation minimum doubleword release
+Compares integer_register_3 with the memory doubleword at the address in integer_register_2. The lesser value is stored in the memory doubleword at the address in integer_register_2 and written to integer_register_1. Other hardware threads observe this operation to take place after any preceding operations of the executing hardware thread.
+
+amominw integer_register_1 integer_register_2 integer_register_3
+atomic memory operation minimum word
+Compares integer_register_3 with the memory word at the address in integer_register_2. The lesser value is stored at the memory word at the address in integer_register_2 and written sign-extended to integer_register_1.
+
+amominwaq integer_register_1 integer_register_2 integer_register_3
+atomic memory operation minimum word acquire
+Compares integer_register_3 with the memory word at the address in integer_register_2. The lesser value is stored at the memory word at the address in integer_register_2 and written sign-extended to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations of the executing hardware thread.
+
+amominwaqrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation minimum word acquire and release
+Compares integer_register_3 with the memory word at the address in integer_register_2. The lesser value is stored at the memory word at the address in integer_register_2 and written sign-extended to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations and after any preceding operations of the executing hardware thread.
+
+amominwrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation minimum word release
+Compares integer_register_3 with the memory word at the address in integer_register_2. The lesser value is stored at the memory word at the address in integer_register_2 and written sign-extended to integer_register_1. Other hardware threads observe this operation to take place after any preceding operation of the executing hardware thread.
+
+amominud integer_register_1 integer_register_2 integer_register_3
+atomic memory operation minimum unsigned doubleword
+Compares integer_register_3 with the memory doubleword at the address in integer_register_2, treating them as unsigned values. The lesser value is stored at the memory doubleword in integer_register_2 and written to integer_register_1.
+
+amominudaq integer_register_1 integer_register_2 integer_register_3
+atomic memory operation minimum unsigned doubleword acquire
+Compares integer_register_3 with the memory doubleword at the address in integer_register_2, treating them as unsigned values. The lesser value is stored at the memory doubleword in integer_register_2 and written to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations of the executing hardware thread.
+
+amominudaqrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation minimum unsigned doubleword acquire and release
+Compares integer_register_3 with the memory doubleword at the address in integer_register_2, treating them as unsigned values. The lesser value is stored at the memory doubleword in integer_register_2 and written to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations and after any preceding operations of the executing hardware thread.
+
+amominudrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation minimum unsigned doubleword release
+Compares integer_register_3 with the memory doubleword at the address in integer_register_2, treating them as unsigned values. The lesser value is stored at the memory doubleword in integer_register_2 and written to integer_register_1. Other hardware threads observe this operation to take place after any preceding operations of the executing hardware thread.
+
+amominuw integer_register_1 integer_register_2 integer_register_3
+atomic memory operation minimum unsigned word
+Compares integer_register_3 with the memory word at the address in integer_register_2, treating them as unsigned values. The lesser value is stored at the memory word at the address in integer_register_2 and written sign-extended to integer_register_1.
+
+amominuwaq integer_register_1 integer_register_2 integer_register_3
+atomic memory operation minimum unsigned word acquire
+Compares integer_register_3 with the memory word at the address in integer_register_2, treating them as unsigned values. The lesser value is stored at the memory word at the address in integer_register_2 and written sign-extended to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations of the executing hardware thread.
+
+amominuwaqrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation minimum unsigned word acquire and release
+Compares integer_register_3 with the memory word at the address in integer_register_2, treating them as unsigned values. The lesser value is stored at the memory word at the address in integer_register_2 and written sign-extended to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations and after any preceding operations of the executing hardware thread.
+
+amominuwrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation minimum unsigned word release
+Compares integer_register_3 with the memory word at the address in integer_register_2, treating them as unsigned values. The lesser value is stored at the memory word at the address in integer_register_2 and written sign-extended to integer_register_1. Other hardware threads observe this operation to take place after any preceding operations of the executing hardware thread.
+
+amoord integer_register_1 integer_register_2 integer_register_3
+atomic memory operation or doubleword
+Computes a bitwise or of integer_register_3 and the memory doubleword at the address in integer_register_2. The result is stored in the memory doubleword at the address in integer_register_2 and written to integer_register_1.
+
+amoordaq integer_register_1 integer_register_2 integer_register_3
+atomic memory operation or doubleword acquire
+Computes a bitwise or of integer_register_3 and the memory doubleword at the address in integer_register_2. The result is stored in the memory doubleword at the address in integer_register_2 and written to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations of the executing hardware thread.
+
+amoordaqrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation or doubleword acquire and release
+Computes a bitwise or of integer_register_3 and the memory doubleword at the address in integer_register_2. The result is stored in the memory doubleword at the address in integer_register_2 and written to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations and after any preceding operations of the executing hardware thread.
+
+amoordrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation or doubleword release
+Computes a bitwise or of integer_register_3 and the memory doubleword at the address in integer_register_2. The result is stored in the memory doubleword at the address in integer_register_2 and written to integer_register_1. Other hardware threads observe this operation to take place after any preceding operations of the executing hardware thread.
+
+amoorw integer_register_1 integer_register_2 integer_register_3
+atomic memory operation or word
+Computes a bitwise or of integer_register_3 and the memory word at the address in integer_register_2. The result is stored in the memory word at the address in integer_register_2 and written sign-extended to integer_register_1.
+
+amoorwaq integer_register_1 integer_register_2 integer_register_3
+atomic memory operation or word acquire
+Computes a bitwise or of integer_register_3 and the memory word at the address in integer_register_2. The result is stored in the memory word at the address in integer_register_2 and written sign-extended to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations of the executing hardware thread.
+
+amoorwaqrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation or word acquire and release
+Computes a bitwise or of integer_register_3 and the memory word at the address in integer_register_2. The result is stored in the memory word at the address in integer_register_2 and written sign-extended to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations and after any preceding operations of the executing hardware thread.
+
+amoorwrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation or word release
+Computes a bitwise or of integer_register_3 and the memory word at the address in integer_register_2. The result is stored in the memory word at the address in integer_register_2 and written sign-extended to integer_register_1. Other hardware threads observe this operation to take place after any preceding operations of the executing hardware thread.
+
+amoswapd integer_register_1 integer_register_2 integer_register_3
+atomic memory operation swap doubleword
+Stores integer_register_3 in the memory doubleword at the address in integer_register_2 and writes the previous value of the memory doubleword at the address in integer_register_2 to integer_register_1.
+
+amoswapdaq integer_register_1 integer_register_2 integer_register_3
+atomic memory operation swap doubleword acquire
+Stores integer_register_3 in the memory doubleword at the address in integer_register_2 and writes the previous value of the memory doubleword at the address in integer_register_2 to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations of the executing hardware thread.
+
+amoswapdaqrl integer_register_1 integer_register_2 integerregister_3
+atomic memory operation swap doubleword acquire and release
+Stores integer_register_3 in the memory doubleword at the address in integer_register_2 and writes the previous value of the memory doubleword at the address in integer_register_2 to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations and after any preceding operations of the executing hardware thread.
+
+amoswapdrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation swap doubleword release
+Stores integer_register_3 in the memory doubleword at the address in integer_register_2 and writes the previous value of the memory doubleword at the address in integer_register_2 to integer_register_1. Other hardware threads observe this operation to take place after any preceding operations of the executing hardware thread.
+
+amoswapw integer_register_1 integer_register_2 integer_register_3
+atomic memory operation swap word
+Stores integer_register_3 in the memory word at the address in integer_register_2 and writes the previous value of the memory word at the address in integer_register_2 sign-extended to integer_register_1.
+
+amoswapwaq integer_register_1 integer_register_2 integer_register_3
+atomic memory operation swap word acquire
+Stores integer_register_3 in the memory word at the address in integer_register_2 and writes the previous value of the memory word at the address in integer_register_2 sign-extended to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations of the executing hardware thread.
+
+amoswapwaqrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation swap word acquire and release
+Stores integer_register_3 in the memory word at the address in integer_register_2 and writes the previous value of the memory word at the address in integer_register_2 sign-extended to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations and after any preceding operations of the executing hardware thread.
+
+amoswapwrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation swap word release
+Stores integer_register_3 in the memory word at the address in integer_register_2 and writes the previous value of the memory word at the address in integer_register_2 sign-extended to integer_register_1. Other hardware threads observe this operation to take place after any preceding operations of the executing hardware thread.
+
+amoxord integer_register_1 integer_register_2 integer_register_3
+atomic memory operation exclusive or doubleword
+Computes an exclusive or of integer_register_3 and the memory doubleword at the address in integer_register_2. The result is stored in the memory doubleword at the address in integer_register_2 and written to integer_register_1.
+
+amoxordaq integer_register_1 integer_register_2 integer_register_3
+atomic memory operation exclusive or doubleword acquire
+Computes an exclusive or of integer_register_3 and the memory doubleword at the address in integer_register_2. The result is stored in the memory doubleword at the address in integer_register_2 and written to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations of the executing hardware thread.
+
+amoxordaqrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation exclusive or doubleword acquire and release
+Computes an exclusive or of integer_register_3 and the memory doubleword at the address in integer_register_2. The result is stored in the memory doubleword at the address in integer_register_2 and written to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations and after any preceding operations of the executing hardware thread.
+
+amoxordrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation exclusive or doubleword release
+Computes an exclusive or of integer_register_3 and the memory doubleword at the address in integer_register_2. The result is stored in the memory doubleword at the address in integer_register_2 and written to integer_register_1. Other hardware threads observe this operation to take place after any preceding operations of the executing hardware thread.
+
+amoxorw integer_register_1 integer_register_2 integer_register_3
+atomic memory operation exclusive or word
+Computes an exclusive or of integer_register_3 and the memory word at the address in integer_register_2. The result is stored in the memory word at the address in integer_register_2 and written sign-extended into integer_register_1.
+
+amoxorwaq integer_register_1 integer_register_2 integer_register_3
+atomic memory operation exclusive or word acquire
+Computes an exclusive or of integer_register_3 and the memory word at the address in integer_register_2. The result is stored in the memory word at the address in integer_register_2 and written sign-extended into integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations of the executing hardware thread.
+
+amoxorwaqrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation exclusive or word acquire and release
+Computes an exclusive or of integer_register_3 and the memory word at the address in integer_register_2. The result is stored in the memory word at the address in integer_register_2 and written sign-extended into integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations and after any preceding operations of the executing hardware thread.
+
+amoxorwrl integer_register_1 integer_register_2 integer_register_3
+atomic memory operation exclusive or word release
+Computes an exclusive or of integer_register_3 and the memory word at the address in integer_register_2. The result is stored in the memory word at the address in integer_register_2 and written sign-extended into integer_register_1. Other hardware threads observe this operation to take place after any preceding operations of the executing hardware thread.
+
+and integer_register_1 integer_register_2 integer_register_3
+and
+Computes a bitwise and of integer_register_3 and integer_register_2 and writes the result to integer_register_1.
+
+andi integer_register_1 integer_register_2 integer
+and immediate
+Computes a bitwise and of integer and integer_register_2 and writes the result to integer_register_1. integer has to be in the range -2048 to 2047.
+
+auipc integer_register integer
+add upper immediate to program counter
+Adds integer, left shifted by 12 bits, to the program counter. The result is written to the integer_register. integer has to be in the range -524288 to 524287.
+
+beq integer_register_1 integer_register_2 integer
+branch if equal
+If integer_register_1 is equal integer_register_2, adds integer, left shifted by one bit, to the program counter. integer has to be in the range -2048 to 2047.
+
+bge integer_register_1 integer_register_2 integer
+branch if greater or equal
+If integer_register_1 is greater than or equal integer_register_2, adds integer, left shifted by one bit, to the program counter. integer has to be in the range -2048 to 2047.
+
+bgeu integer_register_1 integer_register_2 integer
+branch if greater or equal unsigned
+If integer_register_1 is greater than or equal integer_register_2, adds integer, left shifted by one bit, to the program counter. Both registers are treated as unsigned values and integer has to be in the range -2048 to 2047.
+
+blt integer_register_1 integer_register_2 integer
+branch if less than
+If integer_register_1 is less than integer_register_2, adds integer, left shifted by one bit, to the program counter. integer has to be in the range -2048 to 2047.
+
+bltu integer_register_1 integer_register_2 integer
+branch if less than unsigned
+If integer_register_1 is less than integer_register_2, adds integer, left shifted by one bit, to the program counter. Both registers are treated as unsigned values and integer has to be in the range -2048 to 2047.
+
+bne integer_register_1 integer_register_2 integer
+branch if not equal
+If integer_register_1 is not equal integer_register_2, adds integer, left shifted by one bit, to the program counter. integer has to be in the range -2048 to 2047.
+
+call integer_register label
+call
+Writes the address of the following instruction to integer_register and sets the program counter to the address of label. This translates to "jal integer_register label", but when the call operation and label are far apart may be expanded to "auipc integer_register label" and "jalr integer_register integer_register label".
+
+csrrc integer_register_1 integer_register_2 control_and_status_register
+control and status register read and clear
+Computes a bitwise exclusive or of integer_register_2 on control_and_status_register and writes the zero-extended previous value of control_and_status_register to integer_register_1.
+
+csrrci integer_register integer control_and_status_register
+control and status register read and clear immediate
+Computes a bitwise exclusive or of integer on control_and_status_register and writes the zero-extended previous value of control_and_status_register to integer_register. integer has to be in the range 0 to 31.
+
+csrrs integer_register_1 integer_register_2 control_and_status_register
+control and status register read and set
+Computes a bitwise inclusive or of integer_register_2 on control_and_status_register and writes the zero-extended previous value of control_and_status_register to integer_register_1.
+
+csrrsi integer_register integer control_and_status_register
+control and status register read and set immediate
+Computes a bitwise inclusive or of integer on control_and_status_register and writes the zero-extended previous value of control_and_status_register to integer_register. integer has to be in the range 0 to 31.
+
+csrrw integer_register_1 integer_register_2 control_and_status_register
+control and status register read and write
+Writes the value of integer_register_2 to control_and_status_register and the zero-extended previous value of control_and_status_register to integer_register_1.
+
+csrrwi integer_register integer control_and_status_register
+control and status register read and write immediate
+Writes integer to control_and_status_register and the zero-extended previous value of control_and_status_register to integer_register. integer has to be in the range 0 to 31.
+
+div integer_register_1 integer_register_2 integer_register_3
+divide
+Divides integer_register_2 by integer_register_3 and writes the result to integer_register_1.
+
+divu integer_register_1 integer_register_2 integer_register_3
+divide unsigned
+Divides integer_register_2 by integer_register_3, treating both as unsigned values, and writes the result to integer_register_1.
+
+divuw integer_register_1 integer_register_2 integer_register_3
+divide unsigned word
+Divides the lowermost 32 bits of integer_register_2 by the lowermost 32 bits of integer_register_3, treating both as unsigned values, and writes the sign-extended result to integer_register_1.
+
+divw integer_register_1 integer_register_2 integer_register_3
+divide word
+Divides the lowermost 32 bits of integer_register_2 by the lowermost 32 bits of integer_register_3 and writes the sign-extended result to integer_register_1.
+
+ebreak
+envrionment break
+Requests the debugger by raising a breakpoint exception.
+
+ecall
+environment call
+Requests the execution environment by raising an environment call exception.
+
+faddddyn floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point add, double precision, dynamic rounding mode
+Adds the double precision value in floating_point_register_3 to the double precision value in floating_point_register_2, rounding according to the floating point control and status register and writes the double precision result to floating_point_register_1.
+
+fadddrdn floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point add, double precision, round down
+Adds the double precision value in floating_point_register_3 to the double precision value in floating_point_register_2, rounding towards negative infinity and writes the double precision result to floating_point_register_1.
+
+fadddrmm floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point add, double precision, round to nearest, ties to max magnitude
+Adds the double precision value in floating_point_register_3 to the double precision value in floating_point_register_2, rounding to nearest or max magnitude if tied and writes the double precision result to floating_point_register_1.
+
+fadddrne floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point add, double precision, round to nearest, ties to even
+Adds the double precision value in floating_point_register_3 to the double precision value in floating_point_register_2, rounding to nearest or even if tied and writes the double precision result to floating_point_register_1.
+
+fadddrtz floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point add, double precision, round towards zero
+Adds the double precision value in floating_point_register_3 to the double precision value in floating_point_register_2, rounding towards zero and writes the double precision result to floating_point_register_1.
+
+fadddrup floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point add, double precision, round up
+Adds the double precision value in floating_point_register_3 to the double precision value in floating_point_register_2, rounding towards positive infinity and writes the double precision result to floating_point_register_1.
+
+faddqdyn floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point add, quad precision, dynamic rounding mode
+Adds the quad precision value in floating_point_register_3 to the quad precision value in floating_point_register_2, rounding according to the floating point control and status register and writes the quad precision result to floating_point_register_1.
+
+faddqrdn floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point add, quad precision, round down
+Adds the quad precision value in floating_point_register_3 to the quad precision value in floating_point_register_2, rounding towards negative infinity and writes the quad precision result to floating_point_register_1.
+
+faddqrmm floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point add, quad precision, round to nearest, ties to max magnitude
+Adds the quad precision value in floating_point_register_3 to the quad precision value in floating_point_register_2, rounding to nearest or max magnitude if tied and writes the quad precision result to floating_point_register_1.
+
+faddqrne floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point add, quad precision, round to nearest, ties to even
+Adds the quad precision value in floating_point_register_3 to the quad precision value in floating_point_register_2, rounding to nearest or even if tied and writes the quad precision result to floating_point_register_1.
+
+faddqrtz floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point add, quad precision, round towards zero
+Adds the quad precision value in floating_point_register_3 to the quad precision value in floating_point_register_2, rounding towards zero and writes the quad precision result to floating_point_register_1.
+
+faddqrup floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point add, quad precision, round up
+Adds the quad precision value in floating_point_register_3 to the quad precision value in floating_point_register_2, rounding towards positive infinity and writes the quad precision result to floating_point_register_1.
+
+faddsdyn floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point add, single precision, dynamic rounding mode
+Adds the single precision value in floating_point_register_3 to the single precision value in floating_point_register_2, rounding according to the floating point control and status register and write the single precision result to floating_point_register_1.
+
+faddsrdn floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point add, single precision, round down
+Adds the single precision value in floating_point_register_3 to the single precision value in floating_point_register_2, rounding towards negative infinity and writes the single precision result to floating_point_register_1.
+
+faddsrmm floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point add, single precision, round to nearest, ties to max magnitude
+Adds the single precision value in floating_point_register_3 to the single precision value in floating_point_register_2, rounding to nearest or max magnitude if tied and writes the single precision result to floating_point_register_1.
+
+faddsrne floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point add, single precision, round to nearest, ties to even
+Adds the single precision value in floating_point_register_3 to the single precision value in floating_point_register_2, rounding to nearest or even if tied and writes the single precision result to floating_point_register_1.
+
+faddsrtz floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point add, single precision, round towards zero
+Adds the single precision value in floating_point_register_3 to the single precision value in floating_point_register_2, rounding towards zero and writes the single precision result to floating_point_register_1.
+
+faddsrup floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point add, single precision, round up
+Adds the single precision value in floating_point_register_3 to the single precision value in floating_point_register_2, rounding towards positive infinity and writes the single precision result to floating_point_register_1.
+
+fclassd integer_register floating_point_register
+floating point classify, double precision
+Clears integer_register and sets exactly one bit in integer_register according to the class of the double precision value in floating_point_register. Bit zero is set if floating_point_register is negative infinite, bit one is set if floating_point_register is negative normal, bit two is set if floating_point_register is negative subnormal, bit three is set if floating_point_register is negative zero, bit four is set if floating_point_register is positive zero, bit five is set if floating_point_register is positive subnormal, bit six is set if floating_point_register is positive normal, bit seven is set if floating_point_register is positive infinite, bit eight is set if floating_point_register is signaling not a number, bit nine is set if floating_point_register is quiet not a number.
+
+fclassq integer_register floating_point_register
+floating point classify, quad precision
+Clears integer_register and sets exactly one bit in integer_register according to the class of the quad precision value in floating_point_register. Bit zero is set if floating_point_register is negative infinite, bit one is set if floating_point_register is negative normal, bit two is set if floating_point_register is negative subnormal, bit three is set if floating_point_register is negative zero, bit four is set if floating_point_register is positive zero, bit five is set if floating_point_register is positive subnormal, bit six is set if floating_point_register is positive normal, bit seven is set if floating_point_register is positive infinite, bit eight is set if floating_point_register is signaling not a number, bit nine is set if floating_point_register is quiet not a number.
+
+fclasss integer_register floating_point_register
+floating point classify, single precision
+Clears integer_register and sets exactly one bit in integer_register according to the class of the double precision value in floating_point_register. Bit zero is set if floating_point_register is negative infinite, bit one is set if floating_point_register is negative normal, bit two is set if floating_point_register is negative subnormal, bit three is set if floating_point_register is negative zero, bit four is set if floating_point_register is positive zero, bit five is set if floating_point_register is positive subnormal, bit six is set if floating_point_register is positive normal, bit seven is set if floating_point_register is positive infinite, bit eight is set if floating_point_register is signaling not a number, bit nine is set if floating_point_register is quiet not a number.
+
+fcvtdldyn floating_point_register integer_register
+floating point convert to double precision from long, dynamic rounding mode
+Converts the doubleword in integer_register to a double precision floating point value, rounding according to the floating point control and status register and writes the result to floating_point_register.
+
+fcvtdlrdn floating_point_register integer_register
+floating point convert to double precision from long, round down
+Converts the doubleword in integer_register to a double precision floating point value, rounding towards negative infinity and writes the result to floating_point_register.
+
+fcvtdlrmm floating_point_register integer_register
+floating point convert to double precision from long, round to nearest, ties to max magnitude
+Converts the doubleword in integer_register to a double precision floating point value, rounding to nearest or max magnitude if tied and writes the result to floating_point_register.
+
+fcvtdlrne floating_point_register integer_register
+floating point convert to double precision from long, round to nearest, ties to even
+Converts the doubleword in integer_register to a double precision floating point value, rounding to nearest or even if tied and write the result to floating_point_register.
+
+fcvtdlrtz floating_point_register integer_register
+floating point convert to double precision from long, round towards zero
+Converts the doubleword in integer_register to a double precision floating point value, rounding towards zero and writes the result to floating_point_register.
+
+fcvtdlrup floating_point_register integer_register
+floating point convert to double precision from long, round up
+Converts the doubleword in integer_register to a double precision floating point value, rounding towards positive infinity and writes the result to floating_point_register.
+
+fcvtdludyn floating_point_register integer_register
+floating point convert to double precision from unsigned long, dynamic rounding mode
+Converts the unsigned doubleword in integer_register to a double precision floating point value, rounding according to the floating point control and status register and writes the result to floating_point_register.
+
+fcvtdlurdn floating_point_register integer_register
+floating point convert to double precision from unsigned long, round down
+Converts the unsigned doubleword in integer_register to a double precision floating point value, rounding towards negative infinity and writes the result to floating_point_register.
+
+fcvtdlurmm floating_point_register integer_register
+floating point convert to double precision from unsigned long, round to nearest, ties to max magnitude
+Converts the unsigned doubleword in integer_register to a double precision floating point value, rounding to nearest or max magnitude if tied and writes the result to floating_point_register.
+
+fcvtdlurne floating_point_register integer_register
+floating point convert to double precision from unsigned long, round to nearest, ties to even
+Converts the unsigned doubleword in integer_register to a double precision floating point value, rounding to nearest or even if tied and writes the result to floating_point_register.
+
+fcvtdlurtz floating_point_register integer_register
+floating point convert to double precision from unsigned long, round towards zero
+Converts the unsigned doubleword in integer_register to a double precision floating point value, rounding towards zero and writes the result to floating_point_register.
+
+fcvtdlurup floating_point_register integer_register
+floating point convert to double precision from unsigned long, round up
+Converts the unsigned doubleword in integer_register to a double precision floating point value, rounding towards positive infinity and writes the result to floating_point_register.
+
+fcvtdqdyn floating_point_register_1 floating_point_register_2
+floating point convert to double precision from quad precision, dynamic rounding mode
+Converts the quad precision floating point value in floating_point_register_2 to a double precision floating point value, rounding according to the floating point control and status register and writes the result to floating_point_register_1.
+
+fcvtdqrdn floating_point_register_1 floating_point_register_2
+floating point convert to double precision from quad precision, round down
+Converts the quad precision floating point value in floating_point_register_2 to a double precision floating point value, rounding towards negative infinity and writes the result to floating_point_register_1.
+
+fcvtdqrmm floating_point_register_1 floating_point_register_2
+floating point convert to double precision from quad precision, round to nearest, ties to max magnitude
+Converts the quad precision floating point value in floating_point_register_2 to a double precision floating point value, rounding to nearest or max magnitude if tied and writes the result to floating_point_register_1.
+
+fcvtdqrne floating_point_register_1 floating_point_register_2
+floating point convert to double precision from quad precision, round to nearest, ties to even
+Converts the quad precision floating point value in floating_point_register_2 to a double precision floating point value, rounding to nearest or even if tied and writes the result to floating_point_register_1.
+
+fcvtdqrtz floating_point_register_1 floating_point_register_2
+floating point convert to double precision from quad precision, round towards zero
+Converts the quad precision floating point value in floating_point_register_2 to a double precision floating point value, rounding towards zero and writes the result to floating_point_register_1.
+
+fcvtdqrup floating_point_register_1 floating_point_register_2
+floating point convert to double precision from quad precision, round up
+Converts the quad precision floating point value in floating_point_register_2 to a double precision floating point value, rounding towards positive infinity and writes the result to floating_point_register_1.
+
+fcvtds floating_point_register_1 floating_point_register_2
+floating point convert to double precision from single precision
+Converts the single precision floating point value in floating_point_register_2 to a double precision floating point value and writes the result to floating_point_register_1.
+
+fcvtdwdyn floating_point_register integer_register
+floating point convert to double precision from word, dynamic rounding mode
+Converts the word in integer_register to a double precision floating point value, rounding according to the floating point control and status register and writes the result to floating_point_register.
+
+fcvtdwrdn floating_point_register integer_register
+floating point convert to double precision from word, round down
+Converts the word in integer_register to a double precision floating point value, rounding towards negative infinity and writes the result to floating_point_register.
+
+fcvtdwrmm floating_point_register integer_register
+floating point convert to double precision from word, round to nearest, ties to max magnitude
+Converts the word in integer_register to a double precision floating point value, rounding to nearest or max magnitude if tied and writes the result to floating_point_register.
+
+fcvtdwrne floating_point_register integer_register
+floating point convert to double precision from word, round to nearest, ties to even
+Converts the word in integer_register to a double precision floating point value, rounding to nearest or even if tied and writes the result to floating_point_register.
+
+fcvtdwrtz floating_point_register integer_register
+floating point convert to double precision from word, round towards zero
+Converts the word in integer_register to a double precision floating point value, rounding towards zero and writes the result to floating_point_register.
+
+fcvtdwrup floating_point_register integer_register
+floating point convert to double precision from word, round up
+Converts the word in integer_register to a double precision floating point value, rounding towards positive infinity and writes the result to floating_point_register.
+
+fcvtdwudyn floating_point_register integer_register
+floating point convert to double precision from unsigned word, dynamic rounding mode
+Converts the unsigned word in integer_register to a double precision floating point value, rounding according to the floating point control and status register and writes the result to floating_point_register.
+
+fcvtdwurdn floating_point_register integer_register
+floating point convert to double precision from unsigned word, round down
+Converts the unsigned word in integer_register to a double precision floating point value, rounding towards negative infinity and writes the result to floating_point_register.
+
+fcvtdwurmm floating_point_register integer_register
+floating point convert to double precision from unsigned word, round to nearest, ties to max magnitude
+Converts the unsigned word in integer_register to a double precision floating point value, rounding to nearest or max magnitude if tied and writes the result to floating_point_register.
+
+fcvtdwurne floating_point_register integer_register
+floating point convert to double precision from unsigned word, round to nearest, ties to even
+Converts the unsigned word in integer_register to a double precision floating point value, rounding to nearest or even if tied and writes the result to floating_point_register.
+
+fcvtdwurtz floating_point_register integer_register
+floating point convert to double precision from unsigned word, round towards zero
+Converts the unsigned word in integer_register to a double precision floating point value, rounding towards zero and writes the result to floating_point_register.
+
+fcvtdwurup floating_point_register integer_register
+floating point convert to double precision from unsigned word, round up
+Converts the unsigned word in integer_register to a double precision floating point value, rounding towards positive infinity and writes the result to floating_point_register.
+
+fcvtlddyn integer_register floating_point_register
+floating point convert to long from double precision, dynamic rounding mode
+Converts the double precision floating point value in floating_point_register to a long, rounding according to the floating point control and status register and writes the result to integer_register.
+
+fcvtldrdn integer_register floating_point_register
+floating point convert to long from double precision, round down
+Converts the double precision floating point value in floating_point_register to a long, rounding towards negative infinity and writes the result to integer_register.
+
+fcvtldrmm integer_register floating_point_register
+floating point convert to long from double precision, round to nearest, ties to max magnitude
+Converts the double precision floating point value in floating_point_register to a long, rounding to nearest or max magnitude if tied and writes the result to integer_register.
+
+fcvtldrne integer_register floating_point_register
+floating point convert to long from double precision, round to nearest, ties to even
+Converts the double precision floating point value in floating_point_register to a long, rounding to nearest or even if tied and writes the result to integer_register.
+
+fcvtldrtz integer_register floating_point_register
+floating point convert to long from double precision, round towards zero
+Converts the double precision floating point value in floating_point_register to a long, rounding towards zero and writes the result to integer_register.
+
+fcvtldrup integer_register floating_point_register
+floating point convert to long from double precision, round up
+Converts the double precision floating point value in floating_point_register to a long, rounding towards positive infinity and writes the result to integer_register.
+
+fcvtlqdyn integer_register floating_point_register
+floating point convert to long from quad precision, dynamic rounding mode
+Converts the quad precision floating point value in floating_point_register to a long, rounding according to the floating point control and status register and writes the result to integer_register.
+
+fcvtlqrdn integer_register floating_point_register
+floating point convert to long from quad precision, round down
+Converts the quad precision floating point value in floating_point_register to a long, rounding towards negative infinity and writes the result to integer_register.
+
+fcvtlqrmm integer_register floating_point_register
+floating point convert to long from quad precision, round to nearest, ties to max magnitude
+Converts the quad precision floating point value in floating_point_register to a long, rounding to nearest or max magnitude if tied and writes the result to integer_register.
+
+fcvtlqrne integer_register floating_point_register
+floating point convert to long from quad precision, round to nearest, ties to even
+Converts the quad precision floating point value in floating_point_register to a long, rounding to nearest or even if tied and writes the result to integer_register.
+
+fcvtlqrtz integer_register floating_point_register
+floating point convert to long from quad precision, round towards zero
+Converts the quad precision floating point value in floating_point_register to a long, rounding towards zero and writes the result to integer_register.
+
+fcvtlqrup integer_register floating_point_register
+floating point convert to long from quad precision, round up
+Converts the quad precision floating point value in floating_point_register to a long, rounding towards positive infinity and writes the result to integer_register.
+
+fcvtlsdyn integer_register floating_point_register
+floating point convert to long from single precision, dynamic rounding mode
+Converts the single precision floating point value in floating_point_register to a long, rounding according to the floating point control and status register and writes the result to integer_register.
+
+fcvtlsrdn integer_register floating_point_register
+floating point convert to long from single precision, round down
+Converts the single precision floating point value in floating_point_register to a long, rounding towards negative infinity and writes the result to integer_register.
+
+fcvtlsrmm integer_register floating_point_register
+floating point convert to long from single precision, round to nearest, ties to max magnitude
+Converts the single precision floating point value in floating_point_register to a long, rounding to nearest or max magnitude if tied and writes the result to integer_register.
+
+fcvtlsrne integer_register floating_point_register
+floating point convert to long from single precision, round to nearest, ties to even
+Converts the single precision floating point value in floating_point_register to a long, rounding to nearest or even if tied and writes the result to integer_register.
+
+fcvtlsrtz integer_register floating_point_register
+floating point convert to long from single precision, round towards zero
+Converts the single precision floating point value in floating_point_register to a long, rounding towards zero and writes the result to integer_register.
+
+fcvtlsrup integer_register floating_point_register
+floating point convert to long from single precision, round up
+Converts the single precision floating point value in floating_point_register to a long, rounding towards positive infinity and writes the result to integer_register.
+
+fcvtluddyn integer_register floating_point_register
+floating point convert to unsigned long from double precision, dynamic rounding mode
+Converts the double precision floating point value in floating_point_register to an unsigned long, rounding according to the floating point control and status register and writes the result to integer_register.
+
+fcvtludrdn integer_register floating_point_register
+floating point convert to unsigned long from double precision, round down
+Converts the double precision floating point value in floating_point_register to an unsigned long, rounding towards negative infinity and writes the result to integer_register.
+
+fcvtludrmm integer_register floating_point_register
+floating point convert to unsigned long from double precision, round to nearest, ties to max magnitude
+Converts the double precision floating point value in floating_point_register to an unsigned long, rounding to nearest or max magnitude if tied and writes the result to integer_register.
+
+fcvtludrne integer_register floating_point_register
+floating point convert to unsigned long from double precision, round to nearest, ties to even
+Converts the double precision floating point value in floating_point_register to an unsigned long, rounding to nearest or even if tied and writes the result to integer_register.
+
+fcvtludrtz integer_register floating_point_register
+floating point convert to unsigned long from double precision, round towards zero
+Converts the double precision floating point value in floating_point_register to an unsigned long, rounding towards zero and writes the result to integer_register.
+
+fcvtludrup integer_register floating_point_register
+floating point convert to unsigned long from double precision, round up
+Converts the double precision floating point value in floating_point_register to an unsigned long, rounding towards positive infinity and writes the result to integer_register.
+
+fcvtluqdyn integer_register floating_point_register
+floating point convert to unsigned long from quad precision, dynamic rounding mode
+Converts the quad precision floating point value in floating_point_register to an unsigned long, rounding according to the floating point control and status register and writes the result to integer_register.
+
+fcvtluqrdn integer_register floating_point_register
+floating point convert to unsigned long from quad precision, round down
+Converts the quad precision floating point value in floating_point_register to an unsigned long, rounding towards negative infinity and writes the result to integer_register.
+
+fcvtluqrmm integer_register floating_point_register
+floating point convert to unsigned long from quad precision, round to nearest, ties to max magnitude
+Converts the quad precision floating point value in floating_point_register to an unsigned long, rounding to nearest or max magnitude if tied and writes the result to integer_register.
+
+fcvtluqrne integer_register floating_point_register
+floating point convert to unsigned long from quad precision, round to nearest, ties to even
+Converts the quad precision floating point value in floating_point_register to an unsigned long, rounding to nearest or even if tied and writes the result to integer_register.
+
+fcvtluqrtz integer_register floating_point_register
+floating point convert to unsigned long from quad precision, round towards zero
+Converts the quad precision floating point value in floating_point_register to an unsigned long, rounding towards zero and writes the result to integer_register.
+
+fcvtluqrup integer_register floating_point_register
+floating point convert to unsigned long from quad precision, round up
+Converts the quad precision floating point value in floating_point_register to an unsigned long, rounding towards positive infinity and writes the result to integer_register.
+
+fcvtlusdyn integer_register floating_point_register
+floating point convert to unsigned long from single precision, dynamic rounding mode
+Converts the single precision floating point value in floating_point_register to an unsigned long, rounding according to the floating point control and status register and writes the result to integer_register.
+
+fcvtlusrdn integer_register floating_point_register
+floating point convert to unsigned long from single precision, round down
+Converts the single precision floating point value in floating_point_register to an unsigned long, rounding towards negative infinity and writes the result to integer_register.
+
+fcvtlusrmm integer_register floating_point_register
+floating point convert to unsigned long from single precision, round to nearest, ties to max magnitude
+Converts the single precision floating point value in floating_point_register to an unsigned long, rounding to nearest or max magnitude if tied and writes the result to integer_register.
+
+fcvtlusrne integer_register floating_point_register
+floating point convert to unsigned long from single precision, round to nearest, ties to even
+Converts the single precision floating point value in floating_point_register to an unsigned long, rounding to nearest or even if tied and writes the result to integer_register.
+
+fcvtlusrtz integer_register floating_point_register
+floating point convert to unsigned long from single precision, round towards zero
+Converts the single precision floating point value in floating_point_register to an unsigned long, rounding towards zero and writes the result to integer_register.
+
+fcvtlusrup integer_register floating_point_register
+floating point convert to unsigned long from single precision, round up
+Converts the single precision floating point value in floating_point_register to an unsigned long, rounding towards positive infinity and writes the result to integer_register.
+
+fcvtqd floating_point_register_1 floating_point_register_2
+floating point convert to quad precision from double precision
+Converts the double precision floating point value in floating_point_register_2 to a quad precision floating point value and writes the result to floating_point_register_1.
+
+fcvtqldyn floating_point_register integer_register
+floating point convert to quad precision from long, dynamic rounding mode
+Converts the long in integer_register to a quad precision floating point value, rounding according to the floating point control and status register and writes the result to floating_point_register.
+
+fcvtqlrdn floating_point_register integer_register
+floating point convert to quad precision from long, round down
+Converts the long in integer_register to a quad precision floating point value, rounding towards negative infinity and writes the result to floating_point_register.
+
+fcvtqlrmm floating_point_register integer_register
+floating point convert to quad precision from long, round to nearest, ties to max magnitude
+Converts the long in integer_register to a quad precision floating point value, rounding to nearest or max magnitude if tied and writes the result to floating_point_register.
+
+fcvtqlrne floating_point_register integer_register
+floating point convert to quad precision from long, round to nearest, ties to even
+Converts the long in integer_register to a quad precision floating point value, rounding to nearest or even if tied and writes the result to floating_point_register.
+
+fcvtqlrtz floating_point_register integer_register
+floating point convert to quad precision from long, round towards zero
+Converts the long in integer_register to a quad precision floating point value, rounding towards zero and writes the result to floating_point_register.
+
+fcvtqlrup floating_point_register integer_register
+floating point convert to quad precision from long, round up
+Converts the long in integer_register to a quad precision floating point value, rounding towards positive infinity and writes the result to floating_point_register.
+
+fcvtqludyn floating_point_register integer_register
+floating point convert to quad precision from unsigned long, dynamic rounding mode
+Converts the unsigned long in integer_register to a quad precision floating point value, rounding according to the floating point control and status register and writes the result to floating_point_register.
+
+fcvtqlurdn floating_point_register integer_register
+floating point convert to quad precision from unsigned long, round down
+Converts the unsigned long in integer_register to a quad precision floating point value, rounding towards negative infinity and writes the result to floating_point_register.
+
+fcvtqlurmm floating_point_register integer_register
+floating point convert to quad precision from unsigned long, round to nearest, ties to max magnitude
+Converts the unsigned long in integer_register to a quad precision floating point value, rounding to nearest or max magnitude if tied and writes the result to floating_point_register.
+
+fcvtqlurne floating_point_register integer_register
+floating point convert to quad precision from unsigned long, round to nearest, ties to even
+Converts the unsigned long in integer_register to a quad precision floating point value, rounding to nearest or even if tied and writes the result to floating_point_register.
+
+fcvtqlurtz floating_point_register integer_register
+floating point convert to quad precision from unsigned long, round towards zero
+Converts the unsigned long in integer_register to a quad precision floating point value, rounding towards zero and writes the result to floating_point_register.
+
+fcvtqlurup floating_point_register integer_register
+floating point convert to quad precision from unsigned long, round up
+Converts the unsigned long in integer_register to a quad precision floating point value, rounding towards positive infinity and writes the result to floating_point_register.
+
+fcvtqs floating_point_register_1 floating_point_register_2
+floating point convert to quad precision from single precision
+Converts the single precision floating point value in floating_point_register_2 to a quad precision floating point value and writes the result to floating_point_register_1.
+
+fcvtqwdyn floating_point_register integer_register
+floating point convert to quad precision from word, dynamic rounding mode
+Converts the word in integer_register to a quad precision floating point value, rounding according to the floating point control and status register and writes the result to floating_point_register.
+
+fcvtqwrdn floating_point_register integer_register
+floating point convert to quad precision from word, round down
+Converts the word in integer_register to a quad precision floating point value, rounding towards negative infinity and writes the result to floating_point_register.
+
+fcvtqwrmm floating_point_register integer_register
+floating point convert to quad precision from word, round to nearest, ties to max magnitude
+Converts the word in integer_register to a quad precision floating point value, rounding to nearest or max magnitude if tied and writes the result to floating_point_register.
+
+fcvtqwrne floating_point_register integer_register
+floating point convert to quad precision from word, round to nearest, ties to even
+Converts the word in integer_register to a quad precision floating point value, rounding to nearest or even if tied and writes the result to floating_point_register.
+
+fcvtqwrtz floating_point_register integer_register
+floating point convert to quad precision from word, round towards zero
+Converts the word in integer_register to a quad precision floating point value, rounding towards zero and writes the result to floating_point_register.
+
+fcvtqwrup floating_point_register integer_register
+floating point convert to quad precision from word, round up
+Converts the word in integer_register to a quad precision floating point value, rounding rounding towards positive infinity and writes the result to floating_point_register.
+
+fcvtqwudyn floating_point_register integer_register
+floating point convert to quad precision from unsigned word, dynamic rounding mode
+Converts the unsigned word in integer_register to a quad precision floating point value, rounding according to the floating point control and status register and writes the result to floating_point_register.
+
+fcvtqwurdn floating_point_register integer_register
+floating point convert to quad precision from unsigned word, round down
+Converts the unsigned word in integer_register to a quad precision floating point value, rounding towards negative infinity and writes the result to floating_point_register.
+
+fcvtqwurmm floating_point_register integer_register
+floating point convert to quad precision from unsigned word, round to nearest, ties to max magnitude
+Converts the unsigned word in integer_register to a quad precision floating point value, rounding to nearest or max magnitude if tied and writes the result to floating_point_register.
+
+fcvtqwurne floating_point_register integer_register
+floating point convert to quad precision from unsigned word, round to nearest, ties to even
+Converts the unsigned word in integer_register to a quad precision floating point value, rounding to nearest or even if tied and writes the result to floating_point_register.
+
+fcvtqwurtz floating_point_register integer_register
+floating point convert to quad precision from unsigned word, round towards zero
+Converts the unsigned word in integer_register to a quad precision floating point value, rounding towards zero and writes the result to floating_point_register.
+
+fcvtqwurup floating_point_register integer_register
+floating point convert to quad precision from unsigned word, round up
+Converts the unsigned word in integer_register to a quad precision floating point value, rounding towards positive infinity and writes the result to floating_point_register.
+
+fcvtsddyn floating_point_register_1 floating_point_register_2
+floating point convert to single precision from double precision, dynamic rounding mode
+Converts the double precision floating point value in floating_point_register_2 to a single precision floating point value, rounding according to the floating point control and status register and writes the result to floating_point_register_1.
+
+fcvtsdrdn floating_point_register_1 floating_point_register_2
+floating point convert to single precision from double precision, round down
+Converts the double precision floating point value in floating_point_register_2 to a single precision floating point value, rounding towards negative infinity and writes the result to floating_point_register_1.
+
+fcvtsdrmm floating_point_register_1 floating_point_register_2
+floating point convert to single precision from double precision, round to nearest, ties to max magnitude
+Converts the double precision floating point value in floating_point_register_2 to a single precision floating point value, rounding to nearest or max magnitude if tied and writes the result to floating_point_register_1.
+
+fcvtsdrne floating_point_register_1 floating_point_register_2
+floating point convert to single precision from double precision, round to nearest, ties to even
+Converts the double precision floating point value in floating_point_register_2 to a single precision floating point value, rounding to nearest or even if tied and writes the result to floating_point_register_1.
+
+fcvtsdrtz floating_point_register_1 floating_point_register_2
+floating point convert to single precision from double precision, round towards zero
+Converts the double precision floating point value in floating_point_register_2 to a single precision floating point value, rounding towards zero and writes the result to floating_point_register_1.
+
+fcvtsdrup floating_point_register_1 floating_point_register_2
+floating point convert to single precision from double precision, round up
+Converts the double precision floating point value in floating_point_register_2 to a single precision floating point value, rounding towards positive infinity and writes the result to floating_point_register_1.
+
+fcvtsldyn floating_point_register integer_register
+floating point convert to single precision from long, dynamic rounding mode
+Converts the long in integer_register to a single precision floating point value, rounding according to the floating point control and status register and writes the result to floating_point_register.
+
+fcvtslrdn floating_point_register integer_register
+floating point convert to single precision from long, round down
+Converts the long in integer_register to a single precision floating point value, rounding towards negative infinity and writes the result to floating_point_register.
+
+fcvtslrmm floating_point_register integer_register
+floating point convert to single precision from long, round to nearest, ties to max magnitude
+Converts the long in integer_register to a single precision floating point value, rounding to nearest or max magnitude if tied and writes the result to floating_point_register.
+
+fcvtslrne floating_point_register integer_register
+floating point convert to single precision from long, round to nearest, ties to even
+Converts the long in integer_register to a single precision floating point value, rounding to nearest or even if tied and writes the result to floating_point_register.
+
+fcvtslrtz floating_point_register integer_register
+floating point convert to single precision from long, round towards zero
+Converts the long in integer_register to a single precision floating point value, rounding towards zero and writes the result to floating_point_register.
+
+fcvtslrup floating_point_register integer_register
+floating point convert to single precision from long, round up
+Converts the long in integer_register to a single precision floating point value, rounding towards positive infinity and writes the result to floating_point_register.
+
+fcvtsludyn floating_point_register integer_register
+floating point convert to single precision from unsigned long, dynamic rounding mode
+Converts the unsigned long in integer_register to a single precision floating point value, rounding according to the floating point control and status register and writes the result to floating_point_register.
+
+fcvtslurdn floating_point_register integer_register
+floating point convert to single precision from unsigned long, round down
+Converts the unsigned long in integer_register to a single precision floating point value, rounding towards negative infinity and writes the result to floating_point_register.
+
+fcvtslurmm floating_point_register integer_register
+floating point convert to single precision from unsigned long, round to nearest, ties to max magnitude
+Converts the unsigned long in integer_register to a single precision floating point value, rounding to nearest or max magnitude if tied and writes the result to floating_point_register.
+
+fcvtslurne floating_point_register integer_register
+floating point convert to single precision from unsigned long, round to nearest, ties to even
+Converts the unsigned long in integer_register to a single precision floating point value, rounding to nearest or even if tied and writes the result to floating_point_register.
+
+fcvtslurtz floating_point_register integer_register
+floating point convert to single precision from unsigned long, round towards zero
+Converts the unsigned long in integer_register to a single precision floating point value, rounding towards zero and writes the result to floating_point_register.
+
+fcvtslurup floating_point_register integer_register
+floating point convert to single precision from unsigned long, round up
+Converts the unsigned long in integer_register to a single precision floating point value, rounding towards positive infinity and writes the result to floating_point_register.
+
+fcvtsqdyn floating_point_register_1 floating_point_register_2
+floating point convert to single precision from quad precision, dynamic rounding mode
+Converts the quad precision floating point value in floating_point_register_2 to a single precision floating point value, rounding according to the floating point control and status register and writes the result to floating_point_register_1.
+
+fcvtsqrdn floating_point_register_1 floating_point_register_2
+floating point convert to single precision from quad precision, round down
+Converts the quad precision floating point value in floating_point_register_2 to a single precision floating point value, rounding towards negative infinity and writes the result to floating_point_register_1.
+
+fcvtsqrmm floating_point_register_1 floating_point_register_2
+floating point convert to single precision from quad precision, round to nearest, ties to max magnitude
+Converts the quad precision floating point value in floating_point_register_2 to a single precision floating point value, rounding to nearest or max magnitude if tied and writes the result to floating_point_register_1.
+
+fcvtsqrne floating_point_register_1 floating_point_register_2
+floating point convert to single precision from quad precision, round to nearest, ties to even
+Converts the quad precision floating point value in floating_point_register_2 to a single precision floating point value, rounding to nearest or even if tied and writes the result to floating_point_register_1.
+
+fcvtsqrtz floating_point_register_1 floating_point_register_2
+floating point convert to single precision from quad precision, round towards zero
+Converts the quad precision floating point value in floating_point_register_2 to a single precision floating point value, rounding towards zero and writes the result to floating_point_register_1.
+
+fcvtsqrup floating_point_register_1 floating_point_register_2
+floating point convert to single precision from quad precision, round up
+Converts the quad precision floating point value in floating_point_register_2 to a single precision floating point value, rounding towards positive infinity and writes the result to floating_point_register_1.
+
+fcvtswdyn floating_point_register integer_register
+floating point convert to single precision from word, dynamic rounding mode
+Converts the word in integer_register to a single precision floating point value, rounding according to the floating point control and status register and writes the result to floating_point_register.
+
+fcvtswrdn floating_point_register integer_register
+floating point convert to single precision from word, round down
+Converts the word in integer_register to a single precision floating point value, rounding towards negative infinity and writes the result to floating_point_register.
+
+fcvtswrmm floating_point_register integer_register
+floating point convert to single precision from word, round to nearest, ties to max magnitude
+Converts the word in integer_register to a single precision floating point value, rounding to nearest or max magnitude if tied and writes the result to floating_point_register.
+
+fcvtswrne floating_point_register integer_register
+floating point convert to single precision from word, round to nearest, ties to even
+Converts the word in integer_register to a single precision floating point value, rounding to nearest or even if tied and writes the result to floating_point_register.
+
+fcvtswrtz floating_point_register integer_register
+floating point convert to single precision from word, round towards zero
+Converts the word in integer_register to a single precision floating point value, rounding towards zero and writes the result to floating_point_register.
+
+fcvtswrup floating_point_register integer_register
+floating point convert to single precision from word, round up
+Converts the word in integer_register to a single precision floating point value, rounding towards positive infinity and writes the result to floating_point_register.
+
+fcvtswudyn floating_point_register integer_register
+floating point convert to single precision from unsigned word, dynamic rounding mode
+Converts the unsigned word in integer_register to a single precision floating point value, rounding according to the floating point control and status register and writes the result to floating_point_register.
+
+fcvtswurdn floating_point_register integer_register
+floating point convert to single precision from unsigned word, round down
+Converts the unsigned word in integer_register to a single precision floating point value, rounding towards negative infinity and writes the result to floating_point_register.
+
+fcvtswurmm floating_point_register integer_register
+floating point convert to single precision from unsigned word, round to nearest, ties to max magnitude
+Converts the unsigned word in integer_register to a single precision floating point value, rounding to nearest or max magnitude if tied and writes the result to floating_point_register.
+
+fcvtswurne floating_point_register integer_register
+floating point convert to single precision from unsigned word, round to nearest, ties to even
+Converts the unsigned word in integer_register to a single precision floating point value, rounding to nearest or even if tied and writes the result to floating_point_register.
+
+fcvtswurtz floating_point_register integer_register
+floating point convert to single precision from unsigned word, round towards zero
+Converts the unsigned word in integer_register to a single precision floating point value, rounding towards zero and writes the result to floating_point_register.
+
+fcvtswurup floating_point_register integer_register
+floating point convert to single precision from unsigned word, round up
+Converts the unsigned word in integer_register to a single precision floating point value, rounding towards positive infinity and writes the result to floating_point_register.
+
+fcvtwddyn integer_register floating_point_register
+floating point convert to word from double precision, dynamic rounding mode
+Converts the double precision floating point value in floating_point_register to a word, rounding according to the floating point control and status register and writes the result to integer_register.
+
+fcvtwdrdn integer_register floating_point_register
+floating point convert to word from double precision, round down
+Converts the double precision floating point value in floating_point_register to a word, rounding towards negative infinity and writes the result to integer_register.
+
+fcvtwdrmm integer_register floating_point_register
+floating point convert to word from double precision, round to nearest, ties to max magnitude
+Converts the double precision floating point value in floating_point_register to a word, rounding to nearest or max magnitude if tied and writes the result to integer_register.
+
+fcvtwdrne integer_register floating_point_register
+floating point convert to word from double precision, round to nearest, ties to even
+Converts the double precision floating point value in floating_point_register to a word, rounding to nearest or even if tied and writes the result to integer_register.
+
+fcvtwdrtz integer_register floating_point_register
+floating point convert to word from double precision, round towards zero
+Converts the double precision floating point value in floating_point_register to a word, rounding towards zero and writes the result to integer_register.
+
+fcvtwdrup integer_register floating_point_register
+floating point convert to word from double precision, round up
+Converts the double precision floating point value in floating_point_register to a word, rounding towards positive infinity and writes the result to integer_register.
+
+fcvtwqdyn integer_register floating_point_register
+floating point convert to word from quad precision, dynamic rounding mode
+Converts the quad precision floating point value in floating_point_register to a word, rounding according to the floating point control and status register and writes the result to integer_register.
+
+fcvtwqrdn integer_register floating_point_register
+floating point convert to word from quad precision, round down
+Converts the quad precision floating point value in floating_point_register to a word, rounding negative infinity and writes the result to integer_register.
+
+fcvtwqrmm integer_register floating_point_register
+floating point convert to word from quad precision, round to nearest, ties to max magnitude
+Converts the quad precision floating point value in floating_point_register to a word, rounding to nearest or max magnitude if tied and writes the result to integer_register.
+
+fcvtwqrne integer_register floating_point_register
+floating point convert to word from quad precision, round to nearest, ties to even
+Converts the quad precision floating point value in floating_point_register to a word, rounding to nearest or even if tied and writes the result to integer_register.
+
+fcvtwqrtz integer_register floating_point_register
+floating point convert to word from quad precision, round towards zero
+Converts the quad precision floating point value in floating_point_register to a word, rounding towards zero and writes the result to integer_register.
+
+fcvtwqrup integer_register floating_point_register
+floating point convert to word from quad precision, round up
+Converts the quad precision floating point value in floating_point_register to a word, rounding towards positive infinity and writes the result to integer_register.
+
+fcvtwsdyn integer_register floating_point_register
+floating point convert to word from single precision, dynamic rounding mode
+Converts the single precision floating point value in floating_point_register to a word, rounding according to the floating point control and status register and writes the result to integer_register.
+
+fcvtwsrdn integer_register floating_point_register
+floating point convert to word from single precision, round down
+Converts the single precision floating point value in floating_point_register to a word, rounding towards negative infinity and writes the result to integer_register.
+
+fcvtwsrmm integer_register floating_point_register
+floating point convert to word from single precision, round to nearest, ties to max magnitude
+Converts the single precision floating point value in floating_point_register to a word, rounding to nearest or max magnitude if tied and writes the result to integer_register.
+
+fcvtwsrne integer_register floating_point_register
+floating point convert to word from single precision, round to nearest, ties to even
+Converts the single precision floating point value in floating_point_register to a word, rounding to nearest or even if tied and writes the result to integer_register.
+
+fcvtwsrtz integer_register floating_point_register
+floating point convert to word from single precision, round towards zero
+Converts the single precision floating point value in floating_point_register to a word, rounding towards zero and writes the result to integer_register.
+
+fcvtwsrup integer_register floating_point_register
+floating point convert to word from single precision, round up
+Converts the single precision floating point value in floating_point_register to a word, rounding towards positive infinity and writes the result to integer_register.
+
+fcvtwuddyn integer_register floating_point_register
+floating point convert to unsigned word from double precision, dynamic rounding mode
+Converts the double precision floating point value in floating_point_register to an unsigned word, rounding according to the floating point control and status register and writes the result to integer_register.
+
+fcvtwudrdn integer_register floating_point_register
+floating point convert to unsigned word from double precision, round down
+Converts the double precision floating point value in floating_point_register to an unsigned word, rounding towards negative infinity and writes the result to integer_register.
+
+fcvtwudrmm integer_register floating_point_register
+floating point convert to unsigned word from double precision, round to nearest, ties to max magnitude
+Converts the double precision floating point value in floating_point_register to an unsigned word, rounding to nearest or max magnitude if tied and writes the result to integer_register.
+
+fcvtwudrne integer_register floating_point_register
+floating point convert to unsigned word from double precision, round to nearest, ties to even
+Converts the double precision floating point value in floating_point_register to an unsigned word, rounding to nearest or even if tied and writes the result to integer_register.
+
+fcvtwudrtz integer_register floating_point_register
+floating point convert to unsigned word from double precision, round towards zero
+Converts the double precision floating point value in floating_point_register to an unsigned word, rounding towards zero and writes the result to integer_register.
+
+fcvtwudrup integer_register floating_point_register
+floating point convert to unsigned word from double precision, round up
+Converts the double precision floating point value in floating_point_register to an unsigned word, rounding towards positive infinity and writes the result to integer_register.
+
+fcvtwuqdyn integer_register floating_point_register
+floating point convert to unsigned word from quad precision, dynamic rounding mode
+Converts the quad precision floating point value in floating_point_register to an unsigned word, rounding according to the floating point control and status register and writes the result to integer_register.
+
+fcvtwuqrdn integer_register floating_point_register
+floating point convert to unsigned word from quad precision, round down
+Converts the quad precision floating point value in floating_point_register to an unsigned word, rounding towards negative infinity and writes the result to integer_register.
+
+fcvtwuqrmm integer_register floating_point_register
+floating point convert to unsigned word from quad precision, round to nearest, ties to max magnitude
+Converts the quad precision floating point value in floating_point_register to an unsigned word, rounding to nearest or max magnitude if tied and writes the result to integer_register.
+
+fcvtwuqrne integer_register floating_point_register
+floating point convert to unsigned word from quad precision, round to nearest, ties to even
+Converts the quad precision floating point value in floating_point_register to an unsigned word, rounding to nearest or even if tied and writes the result to integer_register.
+
+fcvtwuqrtz integer_register floating_point_register
+floating point convert to unsigned word from quad precision, round towards zero
+Converts the quad precision floating point value in floating_point_register to an unsigned word, rounding towards zero and writes the result to integer_register.
+
+fcvtwuqrup integer_register floating_point_register
+floating point convert to unsigned word from quad precision, round up
+Converts the quad precision floating point value in floating_point_register to an unsigned word, rounding towards positive infinity and writes the result to integer_register.
+
+fcvtwusdyn integer_register floating_point_register
+floating point convert to unsigned word from single precision, dynamic rounding mode
+Converts the single precision floating point value in floating_point_register to an unsigned word, rounding according to the floating point control and status register and writes the result to integer_register.
+
+fcvtwusrdn integer_register floating_point_register
+floating point convert to unsigned word from single precision, round down
+Converts the single precision floating point value in floating_point_register to an unsigned word, rounding towards negative infinity and writes the result to integer_register.
+
+fcvtwusrmm integer_register floating_point_register
+floating point convert to unsigned word from single precision, round to nearest, ties to max magnitude
+Converts the single precision floating point value in floating_point_register to an unsigned word, rounding to nearest or max magnitude if tied and writes the result to integer_register.
+
+fcvtwusrne integer_register floating_point_register
+floating point convert to unsigned word from single precision, round to nearest, ties to even
+Converts the single precision floating point value in floating_point_register to an unsigned word, rounding to nearest or even if tied and writes the result to integer_register.
+
+fcvtwusrtz integer_register floating_point_register
+floating point convert to unsigned word from single precision, round towards zero
+Converts the single precision floating point value in floating_point_register to an unsigned word, rounding towards zero and writes the result to integer_register.
+
+fcvtwusrup integer_register floating_point_register
+floating point convert to unsigned word from single precision, round up
+Converts the single precision floating point value in floating_point_register to an unsigned word, rounding towards positive infinity and writes the result to integer_register.
+
+fdivddyn floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point divide double precision, dynamic rounding mode
+Divides the double precision value in floating_point_register_2 by the double precision value in floating_point_register_3, rounding according to the floating point control and status register and writes the double precision result to floating_point_register_1.
+
+fdivdrdn floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point divide double precision, round down
+Divides the double precision value in floating_point_register_2 by the double precision value in floating_point_register_3, rounding towards negative infinity and writes the double precision result to floating_point_register_1.
+
+fdivdrmm floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point divide double precision, round to nearest, ties to max magnitude
+Divides the double precision value in floating_point_register_2 by the double precision value in floating_point_register_3, rounding to nearest or max magnitude if tied and writes the double precision result to floating_point_register_1.
+
+fdivdrne floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point divide double precision, round to nearest, ties to even
+Divides the double precision value in floating_point_register_2 by the double precision value in floating_point_register_3, rounding to nearest or even if tied and writes the double precision result to floating_point_register_1.
+
+fdivdrtz floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point divide double precision, round towards zero
+Divides the double precision value in floating_point_register_2 by the double precision value in floating_point_register_3, rounding towards zero and writes the double precision result to floating_point_register_1.
+
+fdivdrup floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point divide double precision, round up
+Divides the double precision value in floating_point_register_2 by the double precision value in floating_point_register_3, rounding towards positive infinity and writes the double precision result to floating_point_register_1.
+
+fdivqdyn floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point divide quad precision, dynamic rounding mode
+Divides the quad precision value in floating_point_register_2 by the quad precision value in floating_point_register_3, rounding according to the floating point control and status register and writes the result to floating_point_register_1.
+
+fdivqrdn floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point divide quad precision, round down
+Divides the quad precision value in floating_point_register_2 by the quad precision value in floating_point_register_3, rounding towards negative infinity and writes the result to floating_point_register_1.
+
+fdivqrmm floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point divide quad precision, round to nearest, ties to max magnitude
+Divides the quad precision value in floating_point_register_2 by the quad precision value in floating_point_register_3, rounding to nearest or max magnitude if tied and writes the result to floating_point_register_1.
+
+fdivqrne floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point divide quad precision, round to nearest, ties to even
+Divides the quad precision value in floating_point_register_2 by the quad precision value in floating_point_register_3, rounding to nearest or even if tied and writes the result to floating_point_register_1.
+
+fdivqrtz floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point divide quad precision, round towards zero
+Divides the quad precision value in floating_point_register_2 by the quad precision value in floating_point_register_3, rounding towards zero and writes the result to floating_point_register_1.
+
+fdivqrup floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point divide quad precision, round up
+Divides the quad precision value in floating_point_register_2 by the quad precision value in floating_point_register_3, rounding towards positive infinity and writes the result to floating_point_register_1.
+
+fdivsdyn floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point divide single precision, dynamic rounding mode
+Divides the single precision value in floating_point_register_2 by the single precision value in floating_point_register_3, rounding according to the floating point control and status register and writes the result to floating_point_register_1.
+
+fdivsrdn floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point divide single precision, round down
+Divides the single precision value in floating_point_register_2 by the single precision value in floating_point_register_3, rounding towards negative infinity and writes the result to floating_point_register_1.
+
+fdivsrmm floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point divide single precision, round to nearest, ties to max magnitude
+Divides the single precision value in floating_point_register_2 by the single precision value in floating_point_register_3, rounding to nearest or max magnitude if tied and writes the result to floating_point_register_1.
+
+fdivsrne floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point divide single precision, round to nearest, ties to even
+Divides the single precision value in floating_point_register_2 by the single precision value in floating_point_register_3, rounding to nearest or even if tied and writes the result to floating_point_register_1.
+
+fdivsrtz floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point divide single precision, round towards zero
+Divides the single precision value in floating_point_register_2 by the single precision value in floating_point_register_3, rounding towards zero and writes the result to floating_point_register_1.
+
+fdivsrup floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point divide single precision, round up
+Divides the single precision value in floating_point_register_2 by the single precision value in floating_point_register_3, rounding towards positive infinity and writes the result to floating_point_register_1.
+
+fence fence_mask_1 fence_mask_2
+fence memory and input/output
+Orders memory read and writes and device input and output operations of fence_mask_1 to be observed by other hardware threads to preceed memory read and writes and device input and output operations of fence_mask_2. A fence mask is a combination of the letters 'i', for device input operations, 'o', for device output operations, 'r', for memory read operations and 'w', for memory write operations. For instance, the operation "fence r rw" orders older memory read operations to preceed younger memory read and write operations.
+
+fencei
+fence instruction stream
+Orders stores to instruction memory to preceed succeeding instruction fetches.
+
+feqd integer_register floating_point_register_1 floating_point_register_2
+floating point equal double precision
+If the double precision value in floating_point_register_1 is equal the double precision value in floating_point_register_2, writes the value one to integer_register, zero otherwise.
+
+feqq integer_register floating_point_register_1 floating_point_register_2
+floating point equal quad precision
+If the quad precision value in floating_point_register_1 is equal the quad precision value in floating_point_register_2, writes the value one to integer_register, zero otherwise.
+
+feqs integer_register floating_point_register_1 floating_point_register_2
+floating point equal single precision
+If the single precision value in floating_point_register_1 is equal the single precision value in floating_point_register_2, writes the value one to integer_register, zero otherwise.
+
+fld floating_point_register integer_register integer
+floating point load doubleword
+Adds integer to integer_register and loads the memory doubleword from the resulting address to floating_point_register. integer has to be in the range -2048 to 2047.
+
+fled integer_register floating_point_register_1 floating_point_register_2
+floating point less than or equal double precision
+If the double precision value in floating_point_register_1 is less than or equal the double precision value in floating_point_register_2, writes the value one to integer_register, zero otherwise.
+
+fleq integer_register floating_point_register_1 floating_point_register_2
+floating point less than or equal quad precision
+If the quad precision value in floating_point_register_1 is less than or equal the quad precision value in floating_point_register_2, writes the value one to integer_register, zero otherwise.
+
+fles integer_register floating_point_register_1 floating_point_register_2
+floating point less than or equal single precision
+If the single precision value in floating_point_register_1 is less than or equal the single precision value in floating_point_register_2, writes the value one to integer_register, zero otherwise.
+
+flq floating_point_register integer_register integer
+floating point load quadword
+Adds integer to integer_register and loads the memory quadword from the resulting address to floating_point_register. integer has to be in the range -2048 to 2047.
+
+fltd integer_register floating_point_register_1 floating_point_register_2
+floating point less than double precision
+If the double precision value in floating_point_register_1 is less than the double precision value in floating_point_register_2, writes the value one to integer_register, zero otherwise.
+
+fltq integer_register floating_point_register_1 floating_point_register_2
+floating point less than quad precision
+If the quad precision value in floating_point_register_1 is less than the quad precision value in floating_point_register_2, writes the value one to integer_register, zero otherwise.
+
+flts integer_register floating_point_register_1 floating_point_register_2
+floating point less than single precision
+If the single precision value in floating_point_register_1 is less than the single precision value in floating_point_register_2, writes the value one to integer_register, zero otherwise.
+
+flw floating_point_register integer_register integer
+floating point load word
+Adds integer to integer_register and loads the memory word from the resulting address to floating_point_register. integer has to be in the range -2048 to 2047.
+
+fmaddddyn floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply add double precision, dynamic rounding mode
+Multiplies floating_point_register_2 by floating_point_register_3, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result according to the floating point control and status register.
+
+fmadddrdn floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply add double precision, round down
+Multiplies floating_point_register_2 by floating_point_register_3, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result towards negative infinity.
+
+fmadddrmm floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply add double precision, round to nearest, ties to max magnitude
+Multiplies floating_point_register_2 by floating_point_register_3, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result to nearest or max magnitude if tied.
+
+fmadddrne floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply add double precision, round to nearest, ties to even
+Multiplies floating_point_register_2 by floating_point_register_3, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result to nearest or even if tied.
+
+fmadddrtz floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply add double precision, round towards zero
+Multiplies floating_point_register_2 by floating_point_register_3, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result towards zero.
+
+fmadddrup floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply add double precision, round up
+Multiplies floating_point_register_2 by floating_point_register_3, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result towards positive infinity.
+
+fmaddqdyn floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply add quad precision, dynamic rounding mode
+Multiplies floating_point_register_2 by floating_point_register_3, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result according to the floating point control and status register.
+
+fmaddqrdn floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply add quad precision, round down
+Multiplies floating_point_register_2 by floating_point_register_3, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result towards negative infinity.
+
+fmaddqrmm floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply add quad precision, round to nearest, ties to max magnitude
+Multiplies floating_point_register_2 by floating_point_register_3, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result to nearest or max magnitude if tied.
+
+fmaddqrne floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply add quad precision, round to nearest, ties to even
+Multiplies floating_point_register_2 by floating_point_register_3, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result to nearest or even if tied.
+
+fmaddqrtz floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply add quad precision, round towards zero
+Multiplies floating_point_register_2 by floating_point_register_3, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result towards zero.
+
+fmaddqrup floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply add quad precision, round up
+Multiplies floating_point_register_2 by floating_point_register_3, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result towards positive infinity.
+
+fmaddsdyn floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply add single precision, dynamic rounding mode
+Multiplies floating_point_register_2 by floating_point_register_3, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result according to the floating point control and status register.
+
+fmaddsrdn floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply add single precision, round down
+Multiplies floating_point_register_2 by floating_point_register_3, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result towards negative infinity.
+
+fmaddsrmm floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply add single precision, round to nearest, ties to max magnitude
+Multiplies floating_point_register_2 by floating_point_register_3, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result to nearest or max magnitude if tied.
+
+fmaddsrne floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply add single precision, round to nearest, ties to even
+Multiplies floating_point_register_2 by floating_point_register_3, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result to nearest or even if tied.
+
+fmaddsrtz floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply add single precision, round towards to zero
+Multiplies floating_point_register_2 by floating_point_register_3, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result towards zero.
+
+fmaddsrup floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply add single precision, round up
+Multiplies floating_point_register_2 by floating_point_register_3, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result towards positive infinity.
+
+fmaxd floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point maximum double precision
+Copies the greater out of floating_point_register_2 and floating_point_register_3 to floating_point_register_1. Treats values as double precision.
+
+fmaxq floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point maximum quad precision
+Copies the greater out of floating_point_register_2 and floating_point_register_3 to floating_point_register_1. Treats values as quad precision.
+
+fmaxs floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point maximum single precision
+Copies the greater out of floating_point_register_2 and floating_point_register_3 to floating_point_register_1. Treats values as single precision.
+
+fmind floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point minimum double precision
+Copies the lesser out of floating_point_register_2 and floating_point_register_3 to floating_point_register_1. Treats values as double precision.
+
+fminq floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point minimum quad precision
+Copies the lesser out of floating_point_register_2 and floating_point_register_3 to floating_point_register_1. Treats values as quad precision.
+
+fmins floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point minimum single precision
+Copies the lesser out of floating_point_register_2 and floating_point_register_3 to floating_point_register_1. Treats values as single precision.
+
+fmsubddyn floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply substract double precision, dynamic rounding mode
+Multiplies floating_point_register_2 by floating_point_register_3, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result according to the floating point control and status register.
+
+fmsubdrdn floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply substract double precision, round down
+Multiplies floating_point_register_2 by floating_point_register_3, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result towards negative infinity.
+
+fmsubdrmm floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply substract double precision, round to nearest, ties to max magnitude
+Multiplies floating_point_register_2 by floating_point_register_3, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result to nearest or max magnitude if tied.
+
+fmsubdrne floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply substract double precision, round to nearest, ties to even
+Multiplies floating_point_register_2 by floating_point_register_3, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result to nearest or even if tied.
+
+fmsubdrtz floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply substract double precision, round towards zero
+Multiplies floating_point_register_2 by floating_point_register_3, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result towards zero.
+
+fmsubdrup floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply substract double precision, round up
+Multiplies floating_point_register_2 by floating_point_register_3, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result towards positive infinity.
+
+fmsubqdyn floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply substract quad precision, dynamic rounding mode
+Multiplies floating_point_register_2 by floating_point_register_3, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result according to the floating point control and status register.
+
+fmsubqrdn floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply substract quad precision, round down
+Multiplies floating_point_register_2 by floating_point_register_3, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result towards negative infinity.
+
+fmsubqrmm floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply substract quad precision, round to nearest, ties to max magnitude
+Multiplies floating_point_register_2 by floating_point_register_3, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result to nearest or max magnitude if tied.
+
+fmsubqrne floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply substract quad precision, round to nearest, ties to even
+Multiplies floating_point_register_2 by floating_point_register_3, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result to nearest or even if tied.
+
+fmsubqrtz floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply substract quad precision, round towards zero
+Multiplies floating_point_register_2 by floating_point_register_3, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result towards zero.
+
+fmsubqrup floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply substract quad precision, round up
+Multiplies floating_point_register_2 by floating_point_register_3, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result towards positive infinity.
+
+fmsubsdyn floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply substract single precision, dynamic rounding mode
+Multiplies floating_point_register_2 by floating_point_register_3, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result according to the floating point control and status register.
+
+fmsubsrdn floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply substract single precision, round down
+Multiplies floating_point_register_2 by floating_point_register_3, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result towards negative infinity.
+
+fmsubsrmm floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply substract single precision, round to nearest, ties to max magnitude
+Multiplies floating_point_register_2 by floating_point_register_3, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result to nearest or max magnitude if tied.
+
+fmsubsrne floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply substract single precision, round to nearest, ties to even
+Multiplies floating_point_register_2 by floating_point_register_3, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result to nearest or even if tied.
+
+fmsubsrtz floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply substract single precision, round towards zero
+Multiplies floating_point_register_2 by floating_point_register_3, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result towards zero.
+
+fmsubsrup floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point multiply substract single precision, round up
+Multiplies floating_point_register_2 by floating_point_register_3, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result towards positive infinity.
+
+fmulddyn floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point multiply double precision, dynamic rounding mode
+Multiplies floating_point_register_2 by floating_point_register_3 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result according to the floating point control and status register.
+
+fmuldrdn floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point multiply double precision, round down
+Multiplies floating_point_register_2 by floating_point_register_3 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result towards negative infinity.
+
+fmuldrmm floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point multiply double precision, round to nearest, ties to max magnitude
+Multiplies floating_point_register_2 by floating_point_register_3 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result to nearest or max magnitude if tied.
+
+fmuldrne floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point multiply double precision, round to nearest, ties to even
+Multiplies floating_point_register_2 by floating_point_register_3 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result to nearest or even if tied.
+
+fmuldrtz floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point multiply double precision, round towards zero
+Multiplies floating_point_register_2 by floating_point_register_3 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result towards zero.
+
+fmuldrup floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point multiply double precision, round up
+Multiplies floating_point_register_2 by floating_point_register_3 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result towards positive infinity.
+
+fmulqdyn floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point multiply quad precision, dynamic rounding mode
+Multiplies floating_point_register_2 by floating_point_register_3 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result according to the floating point control and status register.
+
+fmulqrdn floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point multiply quad precision, round down
+Multiplies floating_point_register_2 by floating_point_register_3 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result towards negative infinity.
+
+fmulqrmm floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point multiply quad precision, round to nearest, ties to max magnitude
+Multiplies floating_point_register_2 by floating_point_register_3 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result to nearest or max magnitude if tied.
+
+fmulqrne floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point multiply quad precision, round to nearest, ties to even
+Multiplies floating_point_register_2 by floating_point_register_3 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result to nearest or even if tied.
+
+fmulqrtz floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point multiply quad precision, round towards zero
+Multiplies floating_point_register_2 by floating_point_register_3 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result towards zero.
+
+fmulqrup floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point multiply quad precision, round up
+Multiplies floating_point_register_2 by floating_point_register_3 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result towards positive infinity.
+
+fmulsdyn floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point multiply single precision, dynamic rounding mode
+Multiplies floating_point_register_2 by floating_point_register_3 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result according to the floating point control and status register.
+
+fmulsrdn floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point mulitply single precision, round down
+Multiplies floating_point_register_2 by floating_point_register_3 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result towards negative infinity.
+
+fmulsrmm floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point multiply single precision, round to nearest, ties to max magnitude
+Multiplies floating_point_register_2 by floating_point_register_3 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result to nearest or max magnitude if tied.
+
+fmulsrne floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point multiply single precision, round to nearest, ties to even
+Multiplies floating_point_register_2 by floating_point_register_3 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result to nearest or even if tied.
+
+fmulsrtz floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point multiply single precision, round towards zero
+Multiplies floating_point_register_2 by floating_point_register_3 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result towards zero.
+
+fmulsrup floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point multiply single precision, round up
+Multiplies floating_point_register_2 by floating_point_register_3 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result towards positive infinity.
+
+fmvdx floating_point_register integer_register
+floating point move doubleword from integer register
+Copies the doubleword in integer_register to floating_point_register.
+
+fmvwx floating_point_register integer_register
+floating point move word from integer register
+Copies the word in integer_register to floating_point_register.
+
+fmvxd integer_register floating_point_register
+floating point move doubleword to integer register
+Copies the doubleword from floating_point_register to integer_register.
+
+fmvxw integer_register floating_point_register
+floating point move word to integer register
+Copies the word from floating_point_register to integer_register.
+
+fnmaddddyn floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply add double precision, dynamic rounding mode
+Multiplies floating_point_register_2 by floating_point_register_3, negates, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result according to the floating point control and status register.
+
+fnmadddrdn floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply add double precision, round down
+Multiplies floating_point_register_2 by floating_point_register_3, negates, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result towards negative infinity.
+
+fnmadddrmm floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply add double precision, round to nearest, ties to max magnitude
+Multiplies floating_point_register_2 by floating_point_register_3, negates, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result to nearest or max magnitude if tied.
+
+fnmadddrne floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply add double precision, round to nearest, ties to even
+Multiplies floating_point_register_2 by floating_point_register_3, negates, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result to nearest or even if tied.
+
+fnmadddrtz floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply add double precision, round towards zero
+Multiplies floating_point_register_2 by floating_point_register_3, negates, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result towards zero.
+
+fnmadddrup floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply add double precision, round up
+Multiplies floating_point_register_2 by floating_point_register_3, negates, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result towards positive infinity.
+
+fnmaddqdyn floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply add quad precision, dynamic rounding mode
+Multiplies floating_point_register_2 by floating_point_register_3, negates, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result according to the floating point control and status register.
+
+fnmaddqrdn floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply add quad precision, round down
+Multiplies floating_point_register_2 by floating_point_register_3, negates, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result towards negative infinity.
+
+fnmaddqrmm floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply add quad precision, round to nearest, ties to max magnitude
+Multiplies floating_point_register_2 by floating_point_register_3, negates, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result to nearest or max magnitude if tied.
+
+fnmaddqrne floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply add quad precision, round to nearest, ties to even
+Multiplies floating_point_register_2 by floating_point_register_3, negates, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result to nearest or even if tied.
+
+fnmaddqrtz floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply add quad precision, round towards zero
+Multiplies floating_point_register_2 by floating_point_register_3, negates, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result towards zero.
+
+fnmaddqrup floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply add quad precision, round up
+Multiplies floating_point_register_2 by floating_point_register_3, negates, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result towards positive infinity.
+
+fnmaddsdyn floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply add single precision, dynamic rounding mode
+Multiplies floating_point_register_2 by floating_point_register_3, negates, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result according to the floating point control and status register.
+
+fnmaddsrdn floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply add single precision, round down
+Multiplies floating_point_register_2 by floating_point_register_3, negates, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result towards negative infinity.
+
+fnmaddsrmm floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply add single precision, round to nearest, ties to max magnitude
+Multiplies floating_point_register_2 by floating_point_register_3, negates, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result to nearest or max magnitude if tied.
+
+fnmaddsrne floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply add single precision, round to nearest, ties to even
+Multiplies floating_point_register_2 by floating_point_register_3, negates, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result to nearest or even if tied.
+
+fnmaddsrtz floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply add single precision, round towards zero
+Multiplies floating_point_register_2 by floating_point_register_3, negates, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result towards zero.
+
+fnmaddsrup floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply add single precision, round up
+Multiplies floating_point_register_2 by floating_point_register_3, negates, adds floating_point_register_4 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result towards positive infinity.
+
+fnmsubddyn floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply substract double precision, dynamic rounding mode
+Multiplies floating_point_register_2 by floating_point_register_3, negates, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result according to the floating point control and status register.
+
+fnmsubdrdn floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply substract double precision, round down
+Multiplies floating_point_register_2 by floating_point_register_3, negates, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result towards negative infinity.
+
+fnmsubdrmm floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply substract double precision, round to nearest, ties to max magnitude
+Multiplies floating_point_register_2 by floating_point_register_3, negates, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result to nearest or max magnitude if tied.
+
+fnmsubdrne floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply substract double precision, round to nearest, ties to even
+Multiplies floating_point_register_2 by floating_point_register_3, negates, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result to nearest or even if tied.
+
+fnmsubdrtz floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply substract double precision, round towards zero
+Multiplies floating_point_register_2 by floating_point_register_3, negates, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result towards zero.
+
+fnmsubdrup floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply substract double precision, round up
+Multiplies floating_point_register_2 by floating_point_register_3, negates, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result towards positive infinity.
+
+fnmsubqdyn floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply substract quad precision, dynamic rounding mode
+Multiplies floating_point_register_2 by floating_point_register_3, negates, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result according to the floating point control and status register.
+
+fnmsubqrdn floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply substract quad precision, round down
+Multiplies floating_point_register_2 by floating_point_register_3, negates, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result towards negative infinity.
+
+fnmsubqrmm floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply substract quad precision, round to nearest, ties to max magnitude
+Multiplies floating_point_register_2 by floating_point_register_3, negates, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result to nearest or max magnitude if tied.
+
+fnmsubqrne floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply substract quad precision, round to nearest, ties to even
+Multiplies floating_point_register_2 by floating_point_register_3, negates, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result to nearest or even if tied.
+
+fnmsubqrtz floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply substract quad precision, round towards zero
+Multiplies floating_point_register_2 by floating_point_register_3, negates, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result towards zero.
+
+fnmsubqrup floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply substract quad precision, round up
+Multiplies floating_point_register_2 by floating_point_register_3, negates, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result towards positive infinity.
+
+fnmsubsdyn floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply substract single precision, dynamic rounding mode
+Multiplies floating_point_register_2 by floating_point_register_3, negates, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result according to the floating point control and status register.
+
+fnmsubsrdn floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply substract single precision, round down
+Multiplies floating_point_register_2 by floating_point_register_3, negates, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result towards negative infinity.
+
+fnmsubsrmm floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply substract single precision, round to nearest, ties to max magnitude
+Multiplies floating_point_register_2 by floating_point_register_3, negates, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result to nearest or max magnitude if tied.
+
+fnmsubsrne floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply substract single precision, round to nearest, ties to even
+Multiplies floating_point_register_2 by floating_point_register_3, negates, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result to nearest or even if tied.
+
+fnmsubsrtz floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply substract single precision, round towards zero
+Multiplies floating_point_register_2 by floating_point_register_3, negates, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result towards zero.
+
+fnmsubsrup floating_point_register_1 floating_point_register_2 floating_point_register_3 floating_point_register_4
+floating point negative multiply substract single precision, round up
+Multiplies floating_point_register_2 by floating_point_register_3, negates, substracts floating_point_register_4 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result towards positive infinity.
+
+fsd floating_point_register integer_register integer
+floating point store doubleword
+Adds integer to integer_register and stores the memory doubleword in floating_point_register at the resulting address. integer has to be in the range -2048 to 2047.
+
+fsgnjd floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point sign inject double precision
+Overwrites the sign of floating_point_register_2 with the sign of floating_point_register_3 and writes the result to floating_point_register_1. Treats values as double precision.
+
+fsgnjnd floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point sign inject negate double precision
+Overwrites the sign of floating_point_register_2 with the opposite sign of floating_point_register_3 and writes the result to floating_point_register_1. Treats values as double precision.
+
+fsgnjnq floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point sign inject negate quad precision
+Overwrites the sign of floating_point_register_2 with the opposite sign of floating_point_register_3 and writes the result to floating_point_register_1. Treats values as quad precision.
+
+fsgnjns floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point sign inject negate single precision
+Overwrites the sign of floating_point_register_2 with the opposite sign of floating_point_register_3 and writes the result to floating_point_register_1. Treats values as single precision.
+
+fsgnjq floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point sign inject quad precision
+Overwrites the sign of floating_point_register_2 with the sign of floating_point_register_3 and writes the result to floating_point_register_1. Treats values as quad precision.
+
+fsgnjs floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point sign inject single precision
+Overwrites the sign of floating_point_register_2 with the sign of floating_point_register_3 and writes the result to floating_point_register_1. Treats values as single precision.
+
+fsgnjxd floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point sign inject xor double precision
+Overwrites the sign of floating_point_register_2 with the exclusive or of the sign of floating_point_register_2 and the sign of floating_point_register_3 and writes the result to floating_point_register_1. Treats values as double precision.
+
+fsgnjxq floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point sign inject xor quad precision
+Overwrites the sign of floating_point_register_2 with the exclusive or of the sign of floating_point_register_2 and the sign of floating_point_register_3 and writes the result to floating_point_register_1. Treats values as quad precision.
+
+fsgnjxs floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point sign inject xor single precision
+Overwrites the sign of floating_point_register_2 with the exclusive or of the sign of floating_point_register_2 and the sign of floating_point_register_3 and writes the result to floating_point_register_1. Treats values as single precision.
+
+fsq floating_point_register integer_register integer
+floating point store quadword
+Adds integer to integer_register and stores the memory quadword in floating_point_register at the resulting address. integer has to be in the range -2048 to 2047.
+
+fsqrtddyn floating_point_register_1 floating_point_register_2
+floating point square root double precision, dynamic rounding mode
+Calculates the square root of floating_point_register_2 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result according to the floating point control and status register.
+
+fsqrtdrdn floating_point_register_1 floating_point_register_2
+floating point square root double precision, round down
+Calculates the square root of floating_point_register_2 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result towards negative infinity.
+
+fsqrtdrmm floating_point_register_1 floating_point_register_2
+floating point square root double precision, round to nearest, ties to max magnitude
+Calculates the square root of floating_point_register_2 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result to nearest or max magnitude if tied.
+
+fsqrtdrne floating_point_register_1 floating_point_register_2
+floating point square root double precision, round to nearest, ties to even
+Calculates the square root of floating_point_register_2 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result to nearest or even if tied.
+
+fsqrtdrtz floating_point_register_1 floating_point_register_2
+floating point square root double precision, round towards zero
+Calculates the square root of floating_point_register_2 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result towards zero.
+
+fsqrtdrup floating_point_register_1 floating_point_register_2
+floating point square root double precision, round up
+Calculates the square root of floating_point_register_2 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result towards positive infinity.
+
+fsqrtqdyn floating_point_register_1 floating_point_register_2
+floating point square root quad precision, dynamic rounding mode
+Calculates the square root of floating_point_register_2 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result according to the floating point control and status register.
+
+fsqrtqrdn floating_point_register_1 floating_point_register_2
+floating point square root quad precision, round down
+Calculates the square root of floating_point_register_2 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result towards negative infinity.
+
+fsqrtqrmm floating_point_register_1 floating_point_register_2
+floating point square root quad precision, round to nearest, ties to max magnitude
+Calculates the square root of floating_point_register_2 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result to nearest or max magnitude if tied.
+
+fsqrtqrne floating_point_register_1 floating_point_register_2
+floating point square root quad precision, round to nearest, ties to even
+Calculates the square root of floating_point_register_2 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result to nearest or even if tied.
+
+fsqrtqrtz floating_point_register_1 floating_point_register_2
+floating point square root quad precision, round towards zero
+Calculates the square root of floating_point_register_2 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result towards zero.
+
+fsqrtqrup floating_point_register_1 floating_point_register_2
+floating point square root quad precision, round up
+Calculates the square root of floating_point_register_2 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result towards positive infinity.
+
+fsqrtsdyn floating_point_register_1 floating_point_register_2
+floating point square root single precision, dynamic rounding mode
+Calculates the square root of floating_point_register_2 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result according to the floating point control and status register.
+
+fsqrtsrdn floating_point_register_1 floating_point_register_2
+floating point square root single precision, round down
+Calculates the square root of floating_point_register_2 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result towards negative infinity.
+
+fsqrtsrmm floating_point_register_1 floating_point_register_2
+floating point square root single precision, round to nearest, ties to max magnitude
+Calculates the square root of floating_point_register_2 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result to nearest or max magnitude if tied.
+
+fsqrtsrne floating_point_register_1 floating_point_register_2
+floating point square root single precision, round to nearest, ties to even
+Calculates the square root of floating_point_register_2 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result to nearest or even if tied.
+
+fsqrtsrtz floating_point_register_1 floating_point_register_2
+floating point square root single precision, round towards zero
+Calculates the square root of floating_point_register_2 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result towards zero.
+
+fsqrtsrup floating_point_register_1 floating_point_register_2
+floating point square root single precision, round up
+Calculates the square root of floating_point_register_2 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result towards positive infinity.
+
+fsubddyn floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point substract double precision, dynamic rounding mode
+Substracts floating_point_register_3 from floating_point_register_2 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result according to the floating point control and status register.
+
+fsubdrdn floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point substract double precision, round down
+Substracts floating_point_register_3 from floating_point_register_2 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result towards negative infinity.
+
+fsubdrmm floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point substract double precision, round to nearest, ties to max magnitude
+Substracts floating_point_register_3 from floating_point_register_2 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result to nearest or max magnitude if tied.
+
+fsubdrne floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point substract double precision, round to nearest, ties to even
+Substracts floating_point_register_3 from floating_point_register_2 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result to nearest or even if tied.
+
+fsubdrtz floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point substract double precision, round towards zero
+Substracts floating_point_register_3 from floating_point_register_2 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result towards zero.
+
+fsubdrup floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point substract double precision, round up
+Substracts floating_point_register_3 from floating_point_register_2 and writes the result to floating_point_register_1. Treats values as double precision and rounds the result towards positive infinity.
+
+fsubqdyn floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point substract quad precision, dynamic rounding mode
+Substracts floating_point_register_3 from floating_point_register_2 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result according to the floating point control and status register.
+
+fsubqrdn floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point substract quad precision, round down
+Substracts floating_point_register_3 from floating_point_register_2 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result towards negative infinity.
+
+fsubqrmm floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point substract quad precision, round to nearest, ties to max magnitude
+Substracts floating_point_register_3 from floating_point_register_2 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result to nearest or max magnitude if tied.
+
+fsubqrne floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point substract quad precision, round to nearest, ties to even
+Substracts floating_point_register_3 from floating_point_register_2 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result to nearest or even if tied.
+
+fsubqrtz floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point substract quad precision, round towards zero
+Substracts floating_point_register_3 from floating_point_register_2 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result towards zero.
+
+fsubqrup floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point substract quad precision, round up
+Substracts floating_point_register_3 from floating_point_register_2 and writes the result to floating_point_register_1. Treats values as quad precision and rounds the result towards positive infinity.
+
+fsubsdyn floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point substract single precision, dynamic rounding mode
+Substracts floating_point_register_3 from floating_point_register_2 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result according to the floating point control and status register.
+
+fsubsrdn floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point substract single precision, round down
+Substracts floating_point_register_3 from floating_point_register_2 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result towards negative infinity.
+
+fsubsrmm floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point substract single precision, round to nearest, ties to max magnitude
+Substracts floating_point_register_3 from floating_point_register_2 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result to nearest or max magnitude if tied.
+
+fsubsrne floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point substract single precision, round to nearest, ties to even
+Substracts floating_point_register_3 from floating_point_register_2 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result to nearest or even if tied.
+
+fsubsrtz floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point substract single precision, round towards zero
+Substracts floating_point_register_3 from floating_point_register_2 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result towards zero.
+
+fsubsrup floating_point_register_1 floating_point_register_2 floating_point_register_3
+floating point substract single precision, round up
+Substracts floating_point_register_3 from floating_point_register_2 and writes the result to floating_point_register_1. Treats values as single precision and rounds the result towards positive infinity.
+
+fsw floating_point_register integer_register integer
+floating point store word
+Adds integer to integer_register and stores the memory word in floating_point_register at the resulting address. integer has to be in the range -2048 to 2047.
+
+jal integer_register integer
+jump and link
+Adds integer, left shifted by one bit, to the program counter. The previous value of the program counter is incremented by four and written to integer_register. integer has to be in the range -524288 to 524287.
+
+jalr integer_register_1 integer_register_2 integer
+jump and link register
+Adds integer to integer_register_2, masks off the least significant bit and writes the result to the program counter. The previous value of the program counter is incremented by four and written to integer_register_1. integer has to be in the range -2048 to 2047.
+
+lb integer_register_1 integer_register_2 integer
+load byte
+Adds integer to integer_register_2 and loads the sign-extended memory byte from the resulting address into integer_register_1. integer has to be in the range -2048 to 2047.
+
+lbu integer_register_1 integer_register_2 integer
+load byte unsigned
+Adds integer to integer_register_2 and loads the zero-extended memory byte from the resulting address into integer_register_1. integer has to be in the range -2048 to 2047.
+
+ld integer_register_1 integer_register_2 integer
+load doubleword
+Adds integer to integer_register_2 and loads the memory doubleword from the resulting address into integer_register_1. integer has to be in the range -2048 to 2047.
+
+lh integer_register_1 integer_register_2 integer
+load halfword
+Adds integer to integer_register_2 and loads the sign-extended memory halfword from the resulting address into integer_register_1. integer has to be in the range -2048 to 2047.
+
+lhu integer_register_1 integer_register_2 integer
+load halfword unsigned
+Adds integer to integer_register_2 and loads the zero-extended memory halfword from the resulting address into integer_register_1. integer has to be in the range -2048 to 2047.
+
+li integer_register integer/constant/label
+load immediate
+Writes integer/constant/label to integer_register. label has to be in the range -2147483648 to 2147481599.
+
+lrd integer_register_1 integer_register_2
+load reserve doubleword
+Loads the memory doubleword from the address in integer_register_2 into integer_register_1 and reserves the memory doubleword at the address in integer_register_2.
+
+lrdaq integer_register_1 integer_register_2
+load reserve doubleword acquire
+Loads the memory doubleword from the address in integer_register_2 into integer_register_1 and reserves the memory doubleword at the address in integer_register_2. Other hardware threads observe this operation to take place before any succeeding operations of the executing hardware thread.
+
+lrdaqrl integer_register_1 integer_register_2
+load reserve doubleword acquire and release
+Loads the memory doubleword from the address in integer_register_2 into integer_register_1 and reserves the memory doubleword at the address in integer_register_2. Other hardware threads observe this operation to take place before any succeeding operations and after any preceding operations of the executing hardware thread.
+
+lrdrl integer_register_1 integer_register_2
+load reserve doubleword release
+Loads the memory doubleword from the address in integer_register_2 into integer_register_1 and reserves the memory doubleword at the address in integer_register_2. Other hardware threads observe this operation to take place after any preceding operations of the executing hardware thread.
+
+lrw integer_register_1 integer_register_2
+load reserve word
+Loads the sign-extended memory word from the address in integer_register_2 into integer_register_1 and reserves the memory word at the address in integer_register_2.
+
+lrwaq integer_register_1 integer_register_2
+load reserve word acquire
+Loads the sign-extended memory word from the address in integer_register_2 into integer_register_1 and reserves the memory word at the address in integer_register_2. Other hardware threads observe this operation to take place before any succeeding operations of the executing hardware thread.
+
+lrwaqrl integer_register_1 integer_register_2
+load reserve word acquire and release
+Loads the sign-extended memory word from the address in integer_register_2 into integer_register_1 and reserves the memory word at the address in integer_register_2. Other hardware threads observe this operation to take place before any succeeding operations and after any preceding operations of the executing hardware thread.
+
+lrwrl integer_register_1 integer_register_2
+load reserve word release
+Loads the sign-extended memory word from the address in integer_register_2 into integer_register_1 and reserves the memory word at the address in integer_register_2. Other hardware threads observe this operation to take place after any preceding operations of the executing hardware thread.
+
+lui integer_register integer
+load upper immediate
+Writes integer, left shifted by 12 bits, to integer_register. integer has to be in the range -524288 to 524287.
+
+lw integer_register_1 integer_register_2 integer
+load word
+Adds integer to integer_register_2 and loads the sign-extended memory word from the resulting address into integer_register_1. integer has to be in the range -2048 to 2047.
+
+lwu integer_register_1 integer_register_2 integer
+load word unsigned
+Adds integer to integer_register_2 and loads the zero-extended memory word from the resulting address into integer_register_1. integer has to be in the range -2048 to 2047.
+
+mret
+machine mode exception return
+Returns from a machine-mode exception handler.
+
+mul integer_register_1 integer_register_2 integer_register_3
+multiply
+Multiplies integer_register_2 by integer_register_3 and writes the result to integer_register_1.
+
+mulh integer_register_1 integer_register_2 integer_register_3
+multiply high
+Multiplies integer_register_2 by integer_register_3 and writes the result, shifted by register width to the right, to integer_register_1.
+
+mulhsu integer_register_1 integer_register_2 integer_register_3
+multiply high signed unsigned
+Multiplies integer_register_2 by integer_register_3 and writes the result, shifted by register width to the right, to integer_register_1. integer_register_2 is treated as signed number and integer_register_3 is treated as unsigned number.
+
+mulhu integer_register_1 integer_register_2 integer_register_3
+multiply high unsigned
+Multiplies integer_register_2 by integer_register_3 and writes the result, shifted by register width to the right, to integer_register_1. integer_register_2 and integer_register_3 are treated as unsigned values.
+
+mulw integer_register_1 integer_register_2 integer_register_3
+multiply word
+Multiplies the lowermost 32 bits of integer_register_2 by the lowermost 32 bits of integer_register_3 and writes the sign-extended lowermost 32 bits of the result to integer_register_1.
+
+or integer_register_1 integer_register_2 integer_register_3
+or
+Computes a bitwise inclusive or of integer_register_2 and integer_register_3 and writes the result to integer_register_1.
+
+ori integer_register_1 integer_register_2 integer
+or immediate
+Computes a bitwise inclusive or of integer_register_2 and integer and writes the result to integer_register_1. integer has to be in the range -2048 to 2047.
+
+rem integer_register_1 integer_register_2 integer_register_3
+remainder
+Divides integer_register_2 by integer_register_3 and writes the remainder to integer_register_1.
+
+remu integer_register_1 integer_register_2 integer_register_3
+remainder unsigned
+Divides integer_register_2 by integer_register_3, treating them as unsigned values, and writes the remainder to integer_register_1.
+
+remuw integer_register_1 integer_register_2 integer_register_3
+remainder unsigned word
+Divides the lowermost 32 bits of integer_register_2 by the lowermost 32 bits of integer_register_3, treating them as unsigned values, and writes the sign-extended remainder to integer_register_1.
+
+remw integer_register_1 integer_register_2 integer_register_3
+remainder word
+Divides the lowermost 32 bits of integer_register_2 by the lowermost 32 bits of integer_register_3 and writes the sign-extended remainder to integer_register_1.
+
+sb integer_register_1 integer_register_2 integer
+store byte
+Adds integer to integer_register_2 and stores the lowermost eight bits of integer_register_1 to memory at the resulting address. integer has to be in the range -2048 to 2047.
+
+scd integer_register_1 integer_register_2 integer_register_3
+store conditional doubleword
+If the memory doubleword at the address in integer_register_2 has been reserved, stores integer_register_3 to memory at the address in integer_register_2. On success, zero is written to integer_register_1, otherwise a nonzero code is written to integer_register_1.
+
+scdaq integer_register_1 integer_register_2 integer_register_3
+store conditional doubleword acquire
+If the memory doubleword at the address in integer_register_2 has been reserved, stores integer_register_3 to memory at the address in integer_register_2. On success, zero is written to integer_register_1, otherwise a nonzero code is written to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations of the executing hardware thread.
+
+scdaqrl integer_register_1 integer_register_2 integer_register_3
+store conditional doubleword acquire and release
+If the memory doubleword at the address in integer_register_2 has been reserved, stores integer_register_3 to memory at the address in integer_register_2. On success, zero is written to integer_register_1, otherwise a nonzero code is written to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations and after any preceding operations of the executing hardware thread.
+
+scdrl integer_register_1 integer_register_2 integer_register_3
+store conditional doubleword release
+If the memory doubleword at the address in integer_register_2 has been reserved, stores integer_register_3 to memory at the address in integer_register_2. On success, zero is written to integer_register_1, otherwise a nonzero code is written to integer_register_1. Other hardware threads observe this operation to take place after any preceding operations of the executing hardware thread.
+
+scw integer_register_1 integer_register_2 integer_register_3
+store conditional word
+If the memory word at the address in integer_register_2 has been reserved, stores the lowermost 32 bits of integer_register_3 to memory at the address in integer_register_2. On success, zero is written to integer_register_1, otherwise a nonzero code is written to integer_register_1.
+
+scwaq integer_register_1 integer_register_2 integer_register_3
+store conditional word acquire
+If the memory word at the address in integer_register_2 has been reserved, stores the lowermost 32 bits of integer_register_3 to memory at the address in integer_register_2. On success, zero is written to integer_register_1, otherwise a nonzero code is written to integer_register_1. Other hardware threads observe this operation to take place before any succeeding operations of the executing hardware thread.
+
+scwaqrl integer_register_1 integer_register_2 integer_register_3
+store conditional word acquire and release
+If the memory word at the address in integer_register_2 has been reserved, stores the lowermost 32 bits of integer_register_3 to memory at the address in integer_register_2. On success, zero is written to integer_register_1, otherwise a nonzero code is written to integer_register_1. Other hardware threads observe this operation to take place before any succeeding and after any preceding operations of the executing hardware thread.
+
+scwrl integer_register_1 integer_register_2 integer_register_3
+store conditional word release
+If the memory word at the address in integer_register_2 has been reserved, stores the lowermost 32 bits of integer_register_3 to memory at the address in integer_register_2. On success, zero is written to integer_register_1, otherwise a nonzero code is written to integer_register_1. Other hardware threads observe this operation to take place after any preceding operations of the executing hardware thread.
+
+sd integer_register_1 integer_register_2 integer
+store doubleword
+Adds integer to integer_register_2 and stores integer_register_1 to memory at the resulting address. integer has to be in the range -2048 to 2047.
+
+sfencevma integer_register_1 integer_register_2
+supervisor mode fence virtual memory addresses
+Orders older loads and stores to virtual address translation structures with younger virtual address translations and flushes any local hardware caches related to virtual address translation. A non-zero virtual address in integer_register_1 limits this operation to the single page the virtual address is contained in. A non-zero address space identifier in integer_register_2 limits this operation to a single address space.
+
+sh integer_register_1 integer_register_2 integer
+store halfword
+Adds integer to integer_register_2 and stores the lowermost 16 bits of integer_register_1 to memory at the resulting address. integer has to be in the range -2048 to 2047.
+
+sll integer_register_1 integer_register_2 integer_register_3
+shift left logical
+Shifts integer_register_2 towards the most significant bit by integer_register_3 bit positions, sets the vacated bits to low and writes the result to integer_register_1.
+
+slli integer_register_1 integer_register_2 integer
+shift left logical immediate
+Shifts integer_register_2 towards the most significant bit by integer bit positions, sets the vacated bits to low and writes the result to integer_register_1. integer has to be in the range 0 to 63.
+
+slliw integer_register_1 integer_register_2 integer
+shift left logical immediate word
+Shifts the lowermost 32 bits of integer_register_2 towards the most significant bit by integer bit positions, sets the vacated bits to low and writes the sign-extended lowermost 32 bits of the result to integer_register_1. integer has to be in the range 0 to 31.
+
+sllw integer_register_1 integer_register_2 integer_register_3
+shift left logical word
+Shifts the lowermost 32 bits of integer_register_2 towards the most significant bit by integer_register_3 bit positions, sets the vacated bits to low and writes the sign-extended lowermost 32 bits of the result to integer_register_1.
+
+slt integer_register_1 integer_register_2 integer_register_3
+set if less than
+If integer_register_2 is less than integer_register_3, writes one to integer_register_1, otherwise writes zero to integer_register_1.
+
+slti integer_register_1 integer_register_2 integer
+set if less than immediate
+If integer_register_2 is less than integer, writes one to integer_register_1, otherwise writes zero to integer_register_1. integer has to be in the range -2048 to 2047.
+
+sltiu integer_register_1 integer_register_2 integer
+set if less than immediate unsigned
+If integer_register_2 is less than integer, treating integer_register_2 as unsigned value, writes one to integer_register_1, otherwise writes zero to integer_register_1. integer has to be in the range -2048 to 2047.
+
+sltu integer_register_1 integer_register_2 integer_register_3
+set if less than unsigned
+If integer_register_2 is less than integer_register_3, treating them as unsigned values, writes one to integer_register_1, otherwise writes zero to integer_register_1.
+
+sra integer_register_1 integer_register_2 integer_register_3
+shift right arithmetic
+Shifts integer_register_2 towards the least significant bit by integer_register_3 bit positions, sets the vacated bits extend the sign of integer_register_2 and writes the result to integer_register_1.
+
+srai integer_register_1 integer_register_2 integer
+shift right arithmetic immediate
+Shifts integer_register_2 towards the least significant bit by integer bit positions, sets the vacated bits to extend the sign of integer_register_2 and writes the result to integer_register_1. integer has to be in the range 0 to 63.
+
+sraiw integer_register_1 integer_register_2 integer
+shift right arithmetic immediate word
+Shifts the lowermost 32 bits of integer_register_2 towards the least significant bit by integer bit positions, sets the vacated bits to extend the sign of the lowermost 32 bits of integer_register_2 and writes the sign-extended result to integer_register_1. integer has to be in the range 0 to 31.
+
+sraw integer_register_1 integer_register_2 integer_register_3
+shift right arithmetic word
+Shifts the lowermost 32 bits of integer_register_2 towards the least significant bit by integer_register_3 positions, sets the vacated bits to extend the sign of the lowermost 32 bits of integer_register_2 and writes the sign-extended result to integer_register_1.
+
+sret
+supervisor mode exception return
+Returns from a supervisor-mode exception handler.
+
+srl integer_register_1 integer_register_2 integer_register_3
+shift right logical
+Shifts integer_register_2 towards the least significant bit by integer_register_3 bit positions, sets the vacated bits to low and writes the result to integer_register_1.
+
+srli integer_register_1 integer_register_2 integer
+shift right logical immediate
+Shifts integer_register_2 towards the least significant bit by integer bit positions, sets the vacated bits to low and writes the result to integer_register_1. integer has to be in the range 0 to 63.
+
+srliw integer_register_1 integer_register_2 integer
+shift right logical immediate word
+Shifts the lowermost 32 bits of integer_register_2 towards the least significant bit by integer bit positions, sets the vacated bits to low and writes the sign-extended result to integer_register_1. integer has to be in the range 0 to 31.
+
+srlw integer_register_1 integer_register_2 integer_register_3
+shift right logical word
+Shifts the lowermost 32 bits of integer_register_2 towards the least significant bit by integer_register_3 bit positions, sets the vacated bits to low and writes the sign-extended result to integer_register_1.
+
+sub integer_register_1 integer_register_2 integer_register_3
+substract
+Substract integer_register_3 from integer_register_2 and writes the result to integer_register_1.
+
+subw integer_register_1 integer_register_2 integer_register_3
+substract word
+Substract lowermost 32 bits of integer_register_3 from the lowermost 32 bits of integer_register_2 and writes the sign-extended result to integer_register_1.
+
+sw integer_register_1 integer_register_2 integer
+store word
+Adds integer to integer_register_2 and stores the lowermost 32 bits of integer_register_1 to memory at the resulting address. integer has to be in the range -2048 to 2047.
+
+uret
+user mode exception return
+Returns from a user-mode exception handler.
+
+wfi
+wait for interrupt
+Provides a hint to the execution environment that the executing hardware thread may be stalled until an interrupt is pending.
+
+xor integer_register_1 integer_register_2 integer_register_3
+exclusive or
+Computes an exclusive or of integer_register_2 and integer_register_3 and writes the result to integer_register_1.
+
+xori integer_register_1 integer_register_2 integer
+exclusive or immediate
+Computes an exclusive or of integer_register_2 and integer and writes the result to integer_register_1. integer has to be in the range -2048 to 2047.

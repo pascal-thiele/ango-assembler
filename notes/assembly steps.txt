@@ -1,0 +1,12 @@
+count constant, label and include directives
+allocate constant, label and include tables
+emit constants, labels and includes
+validate syntax
+- report all syntax errors of all sources to the user
+- break assembly after this step if any error is encountered
+expand operations
+- locates each label
+- obtains the size of the resulting binary
+allocate a buffer to translate to
+translate to binary
+write the translation buffer to a file
